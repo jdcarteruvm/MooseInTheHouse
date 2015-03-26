@@ -39,28 +39,41 @@ public class MITH_Card{
     private String cardImage;
     
     /*************************************************
-     * Card() constructs a new card without being    *
-     * given any parameters.                         *
+     * MITH_Card() constructs a new card without     *
+     * any parameters.                               *
      *************************************************/
-    public void Card(){
-        
+    public MITH_Card(){
         cardType = MITH;
-        roomType = null;
-        cardImage = "mith";
-    
+        roomType = "";
+        cardImage = "mith.png";
     }//End Card (default constructor)
     
     /*************************************************
-     * Card() constructs a new card given parameters *
-     * for card type, room type, image name.         *
-     * If card type is not a room, then room = null. *
+     * MITH_Card(type, room, image) constructs a new *
+     * card given params for card type, room type,   *
+     * image name.                                   *
+     * If card type is not a room, then room = "".   *
      *************************************************/
-    public void Card(int type, String room, String image){
+    public MITH_Card(int type, String room, String image){
         cardType = type;
-        //if (type == ROOMEMPTY || type = ROOMMOOSE){roomType = room;}
         roomType = room;
         cardImage = image;
-    }//End Card
+    }//End Card (three params)
+    
+    /*************************************************
+     * MITH_Card(type, room) constructs a new card   *
+     * given params for card type and room type.     *
+     * Given the type for both card and room, an if  *
+     * statement will add the appropriate image name *
+     * for the card.                                 *
+     *************************************************/
+     public MITH_Card(int type, String room){
+        cardType = type;
+        roomType = room;
+        // here should be an if statement, which, depending on the 
+        // card type &or roomtype, sets the appropriate image name
+         
+    }//End Card (two params)
     
     /*************************************************
      * getType() returns the int value of the card's *
