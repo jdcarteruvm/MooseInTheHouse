@@ -19,7 +19,7 @@
     
  ** #################################################### **/
 
-public class MITH_Deck(){
+public class MITH_Deck{
 
 
 

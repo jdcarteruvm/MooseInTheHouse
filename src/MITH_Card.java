@@ -16,7 +16,7 @@
         Bedroom, Livingroom, Kitchen, Bathroom
  ** ###################################################### **/
 
-public class MITH_Card(){
+public class MITH_Card{
     
     // Initial constructors for room card values.
     private int ROOMEMPTY = 0;
@@ -28,27 +28,38 @@ public class MITH_Card(){
     
     // Initialize variable for CARD TYPE, one of:
     // ROOMEMPTY, ROOMMOOSE, DOOR, TRAP, MITH
-    private int type;
+    private int cardType;
         
     // Initialize variable for ROOM TYPE, one of:
     // Bedroom, LivingRoom, Kitchen, Bathroom
     // (Only if CARD TYPE == EMPTY or MOOSE)
-    private String room;
+    private String roomType;
     
     // Initialize variable for CARD IMAGE name.
-    private String image;
+    private String cardImage;
     
-    
-    public Card(){
+    /*************************************************
+     * Card() constructs a new card without being    *
+     * given any parameters.                         *
+     *************************************************/
+    public void Card(){
         
-        type = MITH;
-        room = null;
-        image = "mith";
+        cardType = MITH;
+        roomType = null;
+        cardImage = "mith";
     
     }//End Card (default constructor)
     
-    public Card(){
-        
+    /*************************************************
+     * Card() constructs a new card given parameters *
+     * for card type, room type, image name.         *
+     * If card type is not a room, then room = null. *
+     *************************************************/
+    public void Card(int type, String room, String image){
+        cardType = type;
+        //if (type == ROOMEMPTY || type = ROOMMOOSE){roomType = room;}
+        roomType = room;
+        cardImage = image;
     }//End Card
     
     /*************************************************
@@ -57,7 +68,7 @@ public class MITH_Card(){
      * ROOMEMPTY, ROOMMOOSE, DOOR, TRAP, MITH        *
      *************************************************/
     public int getType(){
-        return type;
+        return cardType;
     }//End getType
     
     /*************************************************
@@ -66,7 +77,7 @@ public class MITH_Card(){
      * Bedroom, LivingRoom, Kitchen, Bathroom        *
      *************************************************/
     public String getRoom(){
-        return room;
+        return roomType;
     }//End getRoom
     
     /*************************************************
@@ -74,7 +85,7 @@ public class MITH_Card(){
      * card's image name.                            *
      *************************************************/
     public String getImage(){
-        return image;
+        return cardImage;
     }//End getImage
 
 }//End Class
