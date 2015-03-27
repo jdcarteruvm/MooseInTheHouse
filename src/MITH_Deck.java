@@ -133,5 +133,20 @@ public class MITH_Deck{
         return deck.size();
     }//End numCards
 
-
+    /*************************************************
+     * reset() resets the deck back to a full and    *
+     * randomized deck.                              *
+     *************************************************/
+    public void reset(){
+        
+    }//End reset
+    
+    /*************************************************
+     * removeMith() removes all Moose in the House   *
+     * cards from the deck.                          *
+     *************************************************/
+    public void removeMith(){
+        
+    }//End removeMith
+    
 }//End Class
