@@ -29,6 +29,7 @@ public class MITH_Deck{
     
     // Initialize card object variable.
     private MITH_Card card;
+    private MITH_Card topCard;
     
     private int count;
     
@@ -100,7 +101,37 @@ public class MITH_Deck{
         }//end 18xfor-loop MITH
     }//End Deck
     
-
+    /*************************************************
+     * draw() returns the top card of the deck and   *
+     * removes it from the ArrayList.                *
+     *************************************************/
+    public MITH_Card draw(){
+        // Will need something to take care of empty decks?
+        
+        // topCard object is the first card in the deck
+        topCard = deck.get(0);
+        // remove this card from the deck
+        deck.remove(0);
+        
+        return topCard;
+    }//End draw
+    
+    /*************************************************
+     * shuffle() randomizes the order of cards in the*
+     * deck, by using java's built-in method         *
+     * Collections.shuffle.                          *
+     *************************************************/
+    public void shuffle(){
+        Collections.shuffle(deck);
+    }//End shuffle
+    
+    /*************************************************
+     * numCards() returns the number of cards that   *
+     * are currently in the deck.                    *
+     *************************************************/
+    public int numCards(){
+        return deck.size();
+    }//End numCards
 
 
 }//End Class

@@ -35,6 +35,8 @@ public class MITH_Card{
     // (Only if CARD TYPE == EMPTY or MOOSE)
     private String roomType;
     
+    private String[] roomList = {"Bedroom", "LivingRoom", "Kitchen", "Bathroom"};
+    
     // Initialize variable for CARD IMAGE name.
     private String cardImage;
     
@@ -65,14 +67,39 @@ public class MITH_Card{
      * given params for card type and room type.     *
      * Given the type for both card and room, an if  *
      * statement will add the appropriate image name *
-     * for the card.                                 *
+     * for the card.                                 * 
+     * If card type is not a room, then room = "".   *
      *************************************************/
      public MITH_Card(int type, String room){
         cardType = type;
         roomType = room;
-        // here should be an if statement, which, depending on the 
-        // card type &or roomtype, sets the appropriate image name
          
+        // SET CARD'S IMAGE NAME (.png)
+        // if type Room, either Empty or Occupied,
+        // For-Loop which sets the image name for the appropriate
+        // room card depending on if its EMPTY or OCCUPIED.
+        if (type == ROOMEMPTY || type == ROOMMOOSE){
+            for (int i = 0; i < 4; i++){
+                if (room == roomList[i]){
+                    if (type == ROOMEMPTY){
+                        cardImage = room + ".png";
+                    }else if (type == ROOMMOOSE){
+                        cardImage = room + "Moose.png";
+                    }
+                }//end if
+            }//end for
+        }//end if
+         
+        // else, if type is anything else,
+        // set the appropriate image name
+        else if (type == DOOR){
+            cardImage = "Door.png";
+        }else if (type == TRAP){
+            cardImage = "Trap.png";
+        }else if (type == MITH){
+            cardImage = "MitH.png";
+        }//end else if
+        
     }//End Card (two params)
     
     /*************************************************
@@ -100,5 +127,15 @@ public class MITH_Card{
     public String getImage(){
         return cardImage;
     }//End getImage
+    
+    /*************************************************
+     * print() returns, and prints to the system, the*
+     * string value of the card.                     *
+     *************************************************/
+    public String print(){
+        String string = "" + cardType + ", room type: " + roomType + ", image: " + cardImage;
+        System.out.println(string);
+        return string;
+    }//End print
 
 }//End Class
