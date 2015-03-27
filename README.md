@@ -8,6 +8,4 @@ CS205 Group Project 2015
 
 We should probably consider keeping this file up to date so we have good notes of development progress when it comes time to write up our different deliverables.
 
-3/26: Added class files for MITH_Card and MITH_Deck, each initially empty besides a rough start in MITH_Card. Will move on to Deck once satisfied with initial version of Card. 
-- Joey
-
+3/26: (Joey) Added class files for MITH_Card and MITH_Deck, each with initial methods and constructors working properly. 
