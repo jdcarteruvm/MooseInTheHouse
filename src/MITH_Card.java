@@ -26,6 +26,9 @@ public class MITH_Card{
     private int TRAP      = 3;
     private int MITH      = 4;
     
+    // Array of card types, indexed according to integer values above.
+    private String[] cardList = {"Empty Room", "Moosed Room", "Door", "Trap", "Moose in the House"};
+    
     // Initialize variable for CARD TYPE, one of:
     // ROOMEMPTY, ROOMMOOSE, DOOR, TRAP, MITH
     private int cardType;
@@ -35,6 +38,7 @@ public class MITH_Card{
     // (Only if CARD TYPE == EMPTY or MOOSE)
     private String roomType;
     
+    // Array of room types.
     private String[] roomList = {"Bedroom", "LivingRoom", "Kitchen", "Bathroom"};
     
     // Initialize variable for CARD IMAGE name.
@@ -76,20 +80,11 @@ public class MITH_Card{
          
         // SET CARD'S IMAGE NAME (.png)
         // if type Room, either Empty or Occupied,
-        // For-Loop which sets the image name for the appropriate
-        // room card depending on if its EMPTY or OCCUPIED.
-        if (type == ROOMEMPTY || type == ROOMMOOSE){
-            for (int i = 0; i < 4; i++){
-                if (room == roomList[i]){
-                    if (type == ROOMEMPTY){
-                        cardImage = room + ".png";
-                    }else if (type == ROOMMOOSE){
-                        cardImage = room + "Moose.png";
-                    }
-                }//end if
-            }//end for
-        }//end if
-         
+        if (type == ROOMEMPTY){
+            cardImage = room + ".png";
+        }else if (type == ROOMMOOSE){
+            cardImage = room + "Moose.png";
+        }
         // else, if type is anything else,
         // set the appropriate image name
         else if (type == DOOR){
@@ -133,7 +128,7 @@ public class MITH_Card{
      * string value of the card.                     *
      *************************************************/
     public String print(){
-        String string = "" + cardType + ", room type: " + roomType + ", image: " + cardImage;
+        String string = "" + cardList[cardType] + ", room type: " + roomType + ", image: " + cardImage;
         System.out.println(string);
         return string;
     }//End print

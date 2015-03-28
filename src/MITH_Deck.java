@@ -85,15 +85,15 @@ public class MITH_Deck{
         // 10 Moose in the House, 5 Doors, 3 Traps
         for (int i = 0; i < 18; i++){
             // create 10 MitH
-            if (i<10){ 
+            if (i<11){ 
                 card = new MITH_Card(MITH, "");
                 deck.add(card);
             // create 5 Doors
-            }else if (i>=10 && i<15){
+            }else if (i>=11 && i<16){
                 card = new MITH_Card(DOOR, "");
                 deck.add(card);
             // create 3 Traps
-            }else if (i>=15){
+            }else if (i>=16){
                 card = new MITH_Card(TRAP, "");
                 deck.add(card);
             }
@@ -146,7 +146,14 @@ public class MITH_Deck{
      * cards from the deck.                          *
      *************************************************/
     public void removeMith(){
-        
+        for (int i = 0; i < deck.size(); i++)
+        {
+            MITH_Card cardm = deck.get(i);
+            if (cardm.getType() == MITH)
+            {
+                deck.remove(i);
+            }//end if
+        }//end for
     }//End removeMith
     
 }//End Class
