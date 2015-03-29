@@ -9,3 +9,5 @@ CS205 Group Project 2015
 We should probably consider keeping this file up to date so we have good notes of development progress when it comes time to write up our different deliverables.
 
 3/26: (Joey) Added class files for MITH_Card and MITH_Deck, each with initial methods and constructors working properly. 
+
+3/28: (Joey) Added class file for MITH_Hand, with constructor and initial methods addCard() and removeCard() working properly. Class MITH_Deck needs reset().
