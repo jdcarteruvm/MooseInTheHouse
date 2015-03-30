@@ -139,7 +139,7 @@ public class MITH_House {
     if(house.addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING)))
       message += "PASS";
     else
-      message += "FAIL";
+      message += "FAIL"; // should work bug in the code
     
     System.out.println(message);
     // PASS => house has a MITH card and an empty living room card
@@ -166,6 +166,22 @@ public class MITH_House {
     System.out.println(message);
     // PASS => house has a MITH card and an empty living room card
     System.out.println("Current house: " + house.toString());
+
+		house = new MITH_House();
+		
+		System.out.println("New House: " + house.toString());
+		
+    // Test adding a empty room card to an empty house
+    message = "Add empty room card to  - ";
+    if(house.addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING)))
+      message += "PASS";
+    else
+      message += "FAIL"; // should work bug in the code
+    
+    System.out.println(message);
+    // PASS => house has an empty living room card
+    System.out.println("Current house: " + house.toString());
+		
   
   } // end main
 
