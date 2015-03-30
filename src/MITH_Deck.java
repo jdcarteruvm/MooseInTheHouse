@@ -157,4 +157,15 @@ public class MITH_Deck{
         }//end for
     }//End removeMith
     
+    /*************************************************
+     * isEmpty() returns true if the deck is empty,    *
+     * otherwise returns false.                      *
+     *************************************************/
+    public boolean isEmpty(){
+        if (deck.size() == 0)
+            return true;
+        else
+            return false;
+    }//End empty
+    
 }//End Class
