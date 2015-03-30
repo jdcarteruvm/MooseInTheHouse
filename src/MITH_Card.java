@@ -35,7 +35,7 @@ public class MITH_Card{
     public static final int NON       = 4;
     
     // Array of card types, indexed according to integer values above.
-    private String[] cardList = {"Empty", "Moosed", "Door", "Trap", "Moose in the House"};
+    public static final String[] cardList = {"Empty", "Moosed", "Door", "Trap", "Moose in the House"};
     
     // Initialize variable for CARD TYPE, one of:
     // ROOMEMPTY, ROOMMOOSE, DOOR, TRAP, MITH
@@ -150,4 +150,63 @@ public class MITH_Card{
 
        return string;
      }      
+    
+    /*************************************************
+     * main() is used for testing MITH_Card          *
+     *************************************************/
+    public static void main(String[] args) {
+        
+        String message = "";
+        
+        System.out.println("\n---------------------------------");
+        System.out.println("    Testing MITH_Card class.");
+        System.out.println("---------------------------------\n");
+        
+        message = "Testing default constructor: ";
+        
+        // CONSTRUCT AND TEST DEFAULT CARD
+        MITH_Card card = new MITH_Card();
+        if(card.toString() != ""){
+            message += "PASS. \n---> Default card: ";
+            message += card.toString();
+        }else
+            message += "FAIL.";
+        
+        System.out.println(message);
+        
+        message = "\nTesting <GETTER> methods on default card. ";
+        
+        message += "\nTesting method getType(): ";
+        if (card.getType() >= 0){
+            message += "PASS. \n ---> Card type: ";
+            message += "(int) " + card.getType() + ", ";
+            message += "(string) " + MITH_Card.cardList[card.getType()];
+        }else
+            message += "FAIL.";
+        System.out.println(message);
+        
+        message = "Testing method getRoom(): ";
+        
+        if (card.getRoom() >= 0){
+            message += "PASS. \n ---> Room type: ";
+            message += "(int) " + card.getRoom() + ", ";
+            message += "(string) " + "'" + MITH_Card.roomList[card.getRoom()] + "'";
+        }else
+            message += "FAIL.";
+        System.out.println(message);
+        
+        message = "Testing method getImage(): ";
+        
+        if (card.getImage() != ""){
+            message += "PASS. \n ---> Image name: ";
+            message += card.getImage();
+        }else
+            message += "FAIL.";
+        System.out.println(message + "\n");
+        
+        message = "\nTesting MITH_Card(type, room) constructor.";
+        
+        
+        
+    }//End MAIN test method
 }//End Class
