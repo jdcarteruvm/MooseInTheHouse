@@ -14,3 +14,6 @@ We should probably consider keeping this file up to date so we have good notes o
 
 3/30: (Jon) changed the card types and room types to public static final values so that other classes can use them for comparison purposes. (ie: otherCard.getType() == MITH_Card.MITH or otherCard.getRoom() == MITH_Card.LIVING)
 
+3/30: (Jon) I added a class to our heirarchy called MITH_House because designing player/game interactions without something like this was a pain in the neck 
+			Note the main method with test cases (ongoing at this point) as a model of the kind of documented testing we can reference in our deliverable due Wednesday. We should have something similar for each class in our program - excluding GUI classes.
+ 
