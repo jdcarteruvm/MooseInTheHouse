@@ -19,18 +19,18 @@
 public class MITH_Card{
     
     // Initial constructors for room card types.
-    public static int ROOMEMPTY = 0;
-    public static int ROOMMOOSE = 1;
+    public static final int ROOMEMPTY = 0;
+    public static final int ROOMMOOSE = 1;
     // Initial constructors for non-room card types.
-    public static int DOOR      = 2;
-    public static int TRAP      = 3;
-    public static int MITH      = 4;
+    public static final int DOOR      = 2;
+    public static final int TRAP      = 3;
+    public static final int MITH      = 4;
     
     // card values
-    public static int BED				= 0;
-    public static int LIVING 		= 1;
-    public static int KITCHEN 	= 2;
-    public static int BATH 			= 3;
+    public static final int BED				= 0;
+    public static final int LIVING 		= 1;
+    public static final int KITCHEN 	= 2;
+    public static final int BATH 			= 3;
     
     // Array of card types, indexed according to integer values above.
     private String[] cardList = {"Empty Room", "Moosed Room", "Door", "Trap", "Moose in the House"};
