@@ -11,3 +11,6 @@ We should probably consider keeping this file up to date so we have good notes o
 3/26: (Joey) Added class files for MITH_Card and MITH_Deck, each with initial methods and constructors working properly. 
 
 3/28: (Joey) Added class file for MITH_Hand, with constructor and initial methods addCard() and removeCard() working properly. Class MITH_Deck needs reset().
+
+3/30: (Jon) changed the card types and room types to public static final values so that other classes can use them for comparison purposes. (ie: otherCard.getType() == MITH_Card.MITH or otherCard.getRoom() == MITH_Card.LIVING)
+
