@@ -20,10 +20,10 @@ public class MITH_House {
   public MITH_House() {
   
     rooms = new ArrayList<House_Slot>();
-    
+    entry = null;
   }
   
-  // add card attempts to add a card to the house in the first slot that is available
+  // add card attempts to add a card to the house in the first appropriate slot that is available
   public Boolean addCard(MITH_Card card){
     
     // add a Moose in the House card to the player's house
@@ -48,12 +48,26 @@ public class MITH_House {
     }
       
     // attempt to add a moose to a room
-    if(card.getType() == card.ROOMMOOSE)
+    if(entry != null && card.getType() == card.ROOMMOOSE)
     {
       for(int i = 0; i < rooms.size(); i++)
       {
         House_Slot room = rooms.get(i);
         if(room.base_card.getRoom() == card.getRoom() && room.top_card == null)
+        {
+          room.top_card = card;
+          return true;
+        }
+      }
+    }
+    
+    // attempt to add a door to a room
+    if(card.getType() == card.DOOR)
+    {
+      for(int i = 0; i < rooms.size(); i++)
+      {
+        House_Slot room = rooms.get(i);
+        if(room.top_card == null)
         {
           room.top_card = card;
           return true;
@@ -120,7 +134,7 @@ public class MITH_House {
 
 
     // PASSED => house has just a MITH card
-    System.out.println("Current house: " + house.toString());
+    System.out.println("Current house: " + house.toString() + "\n");
 
     // Test adding a moose room card to a house with just an MITH_card
     message = "Add moose room card to a house with just an MITH card - ";
@@ -143,7 +157,7 @@ public class MITH_House {
     
     System.out.println(message);
     // PASS => house has a MITH card and an empty living room card
-    System.out.println("Current house: " + house.toString());
+    System.out.println("Current house: " + house.toString() + "\n");
     
     // Test adding a moose room card to a house with an MITH_card and non-matching empty room card
     message = "Add moose room card to a house with an MITH card and non-matching empty room card - ";
@@ -154,7 +168,7 @@ public class MITH_House {
     
     System.out.println(message);
     // PASS => house has a MITH card and an empty living room card
-    System.out.println("Current house: " + house.toString());
+    System.out.println("Current house: " + house.toString() + "\n");
 
     // Test adding a moose room card to a house with an MITH_card and matching empty room card
     message = "Add moose room card to a house with an MITH card and matching empty room card - ";
@@ -165,11 +179,11 @@ public class MITH_House {
     
     System.out.println(message);
     // PASS => house has a MITH card and an empty living room card
-    System.out.println("Current house: " + house.toString());
+    System.out.println("Current house: " + house.toString() + "\n");
 
 		house = new MITH_House();
 		
-		System.out.println("New House: " + house.toString());
+		System.out.println("New House: " + house.toString() + "\n");
 		
     // Test adding a empty room card to an empty house
     message = "Add empty room card to  - ";
@@ -180,11 +194,53 @@ public class MITH_House {
     
     System.out.println(message);
     // PASS => house has an empty living room card
-    System.out.println("Current house: " + house.toString());
+    System.out.println("Current house: " + house.toString() + "\n");
 		
-  
-  } // end main
+    // Test adding a moose room card to a house with only a matching empty room card
+    message = "Add moose room card to a house with only a matching empty room card - ";
+    if(house.addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.LIVING)))
+      message += "FAIL";
+    else
+      message += "PASS";
+    
+    System.out.println(message);
+    // PASS => house has a moosed living room 
+    System.out.println("Current house: " + house.toString() + "\n");
 
+		System.out.println("Add two more empty rooms - already checked");
+		house.addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.BATH));
+		house.addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.KITCHEN));
+		
+    System.out.println("Current house: " + house.toString() + "\n");
+    
+    // Test adding a door to an empty room
+    message = "Test adding a door to the first Empty Room - ";
+    if(house.addCard(new MITH_Card(MITH_Card.DOOR, MITH_Card.NON)))
+    {
+    	message += "PASS";
+    }
+    else
+    {
+    	message += "FAIL";
+    }
+    System.out.println(message);
+    // PASS => house has a MITH card and an empty living room card
+    System.out.println("Current house: " + house.toString() + "\n");
+    
+    // Test adding a moose room card to a house with a matchin mooosed room card
+    message = "Add moose room card to a house with a matching moosed room card - ";
+    if(house.addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.LIVING)))
+      message += "FAIL";
+    else
+      message += "PASS"; // illegal move
+    
+    System.out.println(message);
+    // PASS => house has a moosed living room, doored bathroom and empty kitchen
+    System.out.println("Current house: " + house.toString() + "\n");
+		
+		
+  } // end main
+ 
 // end MITH_House specific functionality
 
   /******************************************************************
