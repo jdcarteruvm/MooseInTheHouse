@@ -48,7 +48,7 @@ public class MITH_Hand{
      * removeCard() removes a card of a certain      *
      * type and/or room type.                        *
      *************************************************/
-    public void removeCard(int type, String room){
+    public void removeCard(int type, int room){
         for (int i=0; i < hand.size(); i++){
             card = hand.get(i);
             if (card.getType() == type && card.getRoom() == room){
@@ -83,7 +83,7 @@ public class MITH_Hand{
         }else{
             for (int i=0; i < hand.size(); i++){
                 card = hand.get(i);
-                string += "Type: " + card.getType() + " | Room: " + card.getRoom() + "\n";
+                string += "Type: " + card.getType() + " | Room: " + MITH_Card.roomList[card.getRoom()] + "\n";
             }
         }
         System.out.println(string);

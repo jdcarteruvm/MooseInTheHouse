@@ -26,11 +26,13 @@ public class MITH_Card{
     public static final int TRAP      = 3;
     public static final int MITH      = 4;
     
-    // card values
+    // Card values and room types
     public static final int BED       = 0;
     public static final int LIVING    = 1;
     public static final int KITCHEN   = 2;
     public static final int BATH      = 3;
+    // Non-room type cards have value of 4
+    public static final int NON       = 4;
     
     // Array of card types, indexed according to integer values above.
     private String[] cardList = {"Empty", "Moosed", "Door", "Trap", "Moose in the House"};
@@ -44,8 +46,8 @@ public class MITH_Card{
     // (Only if CARD TYPE == EMPTY or MOOSE)
     private int roomType;
     
-    // Array of room types.
-    private String[] roomList = {"Bedroom", "Living Room", "Kitchen", "Bathroom"};
+    // Array of room types, with fourth index containing empty string for non-room types.
+    public static final String[] roomList = {"Bedroom", "Living Room", "Kitchen", "Bathroom", ""};
     
     // Initialize variable for CARD IMAGE name.
     private String cardImage;
@@ -56,7 +58,7 @@ public class MITH_Card{
      *************************************************/
     public MITH_Card(){
         cardType = MITH;
-        roomType = 0;
+        roomType = 4;
         cardImage = "mith.png";
     }//End Card (default constructor)
     
@@ -64,7 +66,7 @@ public class MITH_Card{
      * MITH_Card(type, room, image) constructs a new *
      * card given params for card type, room type,   *
      * image name.                                   *
-     * If card type is not a room, then room = "".   *
+     * If card type is not a room, then room = 4.   *
      *************************************************/
     public MITH_Card(int type, int room, String image){
         cardType = type;
@@ -78,7 +80,7 @@ public class MITH_Card{
      * Given the type for both card and room, an if  *
      * statement will add the appropriate image name *
      * for the card.                                 * 
-     * If card type is not a room, then room = "".   *
+     * If card type is not a room, then room = 4.   *
      *************************************************/
      public MITH_Card(int type, int room){
         cardType = type;

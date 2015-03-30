@@ -48,7 +48,7 @@ public class MITH_Deck{
     // Initialize variable & array for ROOM TYPE, one of:
     // Bedroom, LivingRoom, Kitchen, Bathroom
     // (Only if CARD TYPE == EMPTY or MOOSE)
-    private String[] roomType = {"Bedroom", "LivingRoom", "Kitchen", "Bathroom"};
+    private String[] roomType = {"Bedroom", "LivingRoom", "Kitchen", "Bathroom", ""};
     private String room;
     
     // Initialize variable for CARD IMAGE name.
@@ -86,15 +86,15 @@ public class MITH_Deck{
         for (int i = 0; i < 18; i++){
             // create 10 MitH
             if (i<11){ 
-                card = new MITH_Card(MITH_Card.MITH, 0);
+                card = new MITH_Card(MITH_Card.MITH, 4);
                 deck.add(card);
             // create 5 Doors
             }else if (i>=11 && i<16){
-                card = new MITH_Card(MITH_Card.DOOR, 0);
+                card = new MITH_Card(MITH_Card.DOOR, 4);
                 deck.add(card);
             // create 3 Traps
             }else if (i>=16){
-                card = new MITH_Card(MITH_Card.TRAP, 0);
+                card = new MITH_Card(MITH_Card.TRAP, 4);
                 deck.add(card);
             }
             count++;
