@@ -27,13 +27,13 @@ public class MITH_Card{
     public static final int MITH      = 4;
     
     // card values
-    public static final int BED				= 0;
-    public static final int LIVING 		= 1;
-    public static final int KITCHEN 	= 2;
-    public static final int BATH 			= 3;
+    public static final int BED       = 0;
+    public static final int LIVING    = 1;
+    public static final int KITCHEN   = 2;
+    public static final int BATH      = 3;
     
     // Array of card types, indexed according to integer values above.
-    private String[] cardList = {"Empty Room", "Moosed Room", "Door", "Trap", "Moose in the House"};
+    private String[] cardList = {"Empty", "Moosed", "Door", "Trap", "Moose in the House"};
     
     // Initialize variable for CARD TYPE, one of:
     // ROOMEMPTY, ROOMMOOSE, DOOR, TRAP, MITH
@@ -45,7 +45,7 @@ public class MITH_Card{
     private int roomType;
     
     // Array of room types.
-    private String[] roomList = {"Bedroom", "LivingRoom", "Kitchen", "Bathroom"};
+    private String[] roomList = {"Bedroom", "Living Room", "Kitchen", "Bathroom"};
     
     // Initialize variable for CARD IMAGE name.
     private String cardImage;
@@ -139,4 +139,13 @@ public class MITH_Card{
         return string;
     }//End print
 
+    /*************************************************
+     * toString() overload the default toString so   *
+     *            prints make sense                  *
+     *************************************************/
+     public String toString(){
+       String string = "" + cardList[cardType] + " " + roomList[roomType];
+
+       return string;
+     }      
 }//End Class
