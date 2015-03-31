@@ -138,8 +138,8 @@ public class MITH_Deck{
      * randomized deck.                              *
      *************************************************/
     public void reset(){
-        //MITH_Deck();
-        //this.shuffle();
+        MITH_Deck deck = new MITH_Deck();
+        Collections.shuffle(deck);
     }//End reset
     
     /*************************************************
