@@ -48,7 +48,7 @@ public class MITH_Table_GUI extends JFrame
       table.add(menuPanel);
        
               
-      imageIcon mooseLogo;      //Set the window's title
+      ImageIcon mooseLogo;      //Set the window's title
       
       setTitle("MOOSE IN THE HOUSE");
       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -60,9 +60,10 @@ public class MITH_Table_GUI extends JFrame
       //leftPanel.setOpaque(true);
       leftPanel.setBackground(Color.BLACK);
       
-      JLabel label = new JLabel("Menu Pane");
-      mooseLogo = new ImageIcon("HeadOfIan.JPG");
-      menuPanel.add(label); 
+      JLabel mooseLabel = new JLabel();
+      mooseLogo = new ImageIcon("../resources/images/MITH_Logo_150px.png");
+      mooseLabel.setIcon(mooseLogo);
+      menuPanel.add(mooseLabel); 
       menuPanel.setSize(150,400);
       helpButton = new JButton("Help");
       howToPlayButton = new JButton("How To Play");
@@ -75,6 +76,7 @@ public class MITH_Table_GUI extends JFrame
       menuPanel.add(quitButton);
       menuPanel.add(optionsButton);
       menuPanel.setLayout(new GridLayout(8, 3));
+      menuPanel.setBackground(new Color(25,150,50));
       
       
       
