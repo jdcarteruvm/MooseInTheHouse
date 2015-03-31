@@ -168,4 +168,47 @@ public class MITH_Deck{
             return false;
     }//End empty
     
+    public static void main(String[] args){  // Testing Function is Right Here.<--------------------------------- 
+    	
+    	MITH_Deck MD=new MITH_Deck();
+    	
+    	System.out.println(deck);
+    	System.out.println("Main deck has constructed. --->Passed.");
+    	
+    	int i=MD.numCards();
+    	System.out.println("deck.length is: "+i+" (it should be 58 cards in total)");
+    	if(i==58){
+    		System.out.println("--->Passed.");
+    	}
+    	else if(i!=58){
+    		System.out.println("--->Failed.");
+    	}
+    	
+    	System.out.println("Card on the top of the deck is: "+MD.draw());
+    	System.out.println("compare with the actually 'first' card.");
+    	
+    	MD.shuffle();
+    	System.out.println("new deck is: "+ deck);
+    	
+//    	MD.removeMith();
+//    	for(int s=0; s<deck.size(); s++){
+//    		if(deck.get(s)="Moose in the House"){
+//    			System.out.println("removeMith() --->Failed");
+//    		}
+//    		else if(deck.get(s)!="Moose in the House"){
+//    			System.out.println("removeMith() --->Passed.");
+//    		}
+//    	}
+    	
+    	if(MD.isEmpty()==true){
+    		System.out.println("isEmpty() is true. --->Passed.");
+    	}
+    	else if(MD.isEmpty()==false){
+    		System.out.println("isEmpty() is false, --->Passed.");
+    	}
+    	
+    	MD.reset();
+    	
+    }
+    
 }//End Class
