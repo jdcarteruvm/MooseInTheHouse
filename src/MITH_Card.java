@@ -59,7 +59,7 @@ public class MITH_Card{
     public MITH_Card(){
         cardType = MITH;
         roomType = 4;
-        cardImage = "mith.png";
+        cardImage = "MitH.png";
     }//End Card (default constructor)
     
     /*************************************************
@@ -162,7 +162,7 @@ public class MITH_Card{
         System.out.println("    Testing MITH_Card class.");
         System.out.println("---------------------------------\n");
         
-        message = "Testing default constructor: ";
+        message = "Testing MITH_Card() default constructor: ";
         
         // CONSTRUCT AND TEST DEFAULT CARD
         MITH_Card card = new MITH_Card();
@@ -204,9 +204,51 @@ public class MITH_Card{
             message += "FAIL.";
         System.out.println(message + "\n");
         
-        message = "\nTesting MITH_Card(type, room) constructor.";
+        // CONSTRUCT AND TEST EVERY ITERATION OF CARD
+        message = "Testing MITH_Card(type, room) <CONSTRUCTOR> & <GETTERS>.\n";
         
+        System.out.println(message);
+
+        for (int i = 0; i < 5; i++){ // 4 rooms
+            for (int j = 0; j < 5; j++){ // 5 of each
+                // create card Type i, Value j
+                card = new MITH_Card(i, j);
+                message = "Testing MITH_Card(" + cardList[i] + ", " + roomList[j] +"): ";
+                if (card.getType() == i && card.getRoom() == j){
+                    message += "PASS. \n ---> Card type: ";
+                    message += "(int) " + card.getType() + ", ";
+                    message += "(string) " + MITH_Card.cardList[card.getType()];  
+                    message += "\n ---> Room type: ";
+                    message += "(int) " + card.getRoom() + ", ";
+                    message += "(string) " + MITH_Card.roomList[card.getRoom()];
+                    message += "\n ---> Image name: ";
+                    message += card.getImage();
+                }//if
+                else
+                    message += "FAIL.";
+                System.out.println(message);
+            }//end 5xfor-loop
+        }//end 4xfor-loop ROOMS
         
+        // NOTE: POSSIBLE BUG FOUND REGARDING ROOMTYPE VALUE.
+        // When testing every iteration of MITH_Card(), notice that
+        // NON-ROOM type cards, when constructed with a value other 
+        // than 4 (for NON-ROOM), it's still assigned a roomType value
+        // of the assigned integer. We don't want this: if a card is
+        // ever constructed with a type OTHER than ROOM, we want that
+        // card's value (roomType) to be 4. ALWAYS.
+        //
+        // EXAMPLE: When testing MITH_Card(4, 2), otherwise (Moose in the House, Kitchen),
+        // we want the card to output the following when a getter method is used:
+        // cardType = 4 ("Moose in the House")
+        // roomType = 4 ("")
+        // However, the card output reads as follows:
+        // cardType = 4 ("Moose in the House")
+        // roomType = 2 ("Kitchen")
+        
+        System.out.println("\n---------------------------------");
+        System.out.println("  MITH_Card() Testing complete.");
+        System.out.println("---------------------------------\n");
         
     }//End MAIN test method
 }//End Class
