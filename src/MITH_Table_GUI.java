@@ -73,12 +73,15 @@ public class MITH_Table_GUI extends JFrame
       
       menuPanel.add(helpButton);
       menuPanel.add(howToPlayButton);
-      menuPanel.add(quitButton);
       menuPanel.add(optionsButton);
+      menuPanel.add(quitButton);
       menuPanel.setLayout(new GridLayout(8, 3));
       menuPanel.setBackground(new Color(25,150,50));
       
+      optionsButton.addActionListener(new ButtonListener());
       
+      helpButton.addActionListener(new ButtonListener());
+
       
       JLabel label2 = new JLabel("Play Area");
       playArea.add(label2);
@@ -93,6 +96,38 @@ public class MITH_Table_GUI extends JFrame
       setVisible(true);
       
    }
+   
+   
+   
+   
+   private class ButtonListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         if(e.getSource() == optionsButton)
+            {
+               MITH_Options_GUI optionsWindow = new MITH_Options_GUI();
+            }      
+//          else if(e.getSource() == howToPlayButton)
+//             {  
+//                MITH_HowToPlay_GUI howToPlayWindow = new MITH_HowToPlay_GUI();
+//             }
+         else if(e.getSource() == helpButton)
+            {
+               MITH_Help_GUI helpWindow = new MITH_Help_GUI();
+            }
+//          else if(e.getSource() == quitButton)
+//             {
+//                System.exit();
+//             }
+         
+      }
+   }
+
+   
+   
+   
+   
    public static void main(String[] args)
    {
       MITH_Table_GUI gameGui = new MITH_Table_GUI();
