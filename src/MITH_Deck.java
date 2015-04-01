@@ -24,12 +24,12 @@ import java.util.*;
 public class MITH_Deck{
     
     // Initialize array list of all card objects in the deck.
-    private ArrayList<MITH_Card> deck;
+    private static ArrayList<MITH_Card> deck;
     //private MITH_Card[] deck;
     
     // Initialize card object variable.
-    private MITH_Card card;
-    private MITH_Card topCard;
+    private static MITH_Card card;
+    private static MITH_Card topCard;
     
     private int count;
     
@@ -190,15 +190,16 @@ public class MITH_Deck{
     	MD.shuffle();
     	System.out.println("new deck is: "+ MD);
     	
-//    	MD.removeMith();
-//    	for(int s=0; s<deck.size(); s++){
-//    		if(deck.get(s)="Moose in the House"){
-//    			System.out.println("removeMith() --->Failed");
-//    		}
-//    		else if(deck.get(s)!="Moose in the House"){
-//    			System.out.println("removeMith() --->Passed.");
-//    		}
-//    	}
+    	MD.removeMith();
+    	for(int s=0; s<deck.size(); s++){
+            MITH_Card cardm = deck.get(s);
+    		if(cardm.getType() == MITH_Card.MITH){
+    			System.out.println("removeMith() --->Failed");
+    		}
+    		else{
+    			System.out.println("removeMith() --->Passed.");
+    		}
+    	}
     	
     	if(MD.isEmpty()==true){
     		System.out.println("isEmpty() is true. --->Passed.");
