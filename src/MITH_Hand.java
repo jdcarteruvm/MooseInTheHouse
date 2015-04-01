@@ -102,5 +102,32 @@ public class MITH_Hand{
         System.out.println(string);
         return string;
     }//End print
-    
+   
+    public static void main(String [] args){ //Testing
+     
+     String message = ""; 
+     System.out.println("\n -------------------------");
+     System.out.println("   Testing MITH_Hand class.");
+     System.out.println(" ----------------------------\n");
+
+      //TEST 
+     MITH_Hand hand = new MITH_Card();
+      
+      //Testing addCard()
+     if (hand.size = 0){
+      hand.add(c)
+      message += "Passed.";
+     }    
+     else
+     message += "Failed";
+     System.out.println(message);
+
+
+   //Testing isEmpty()
+     if (hand.isEmpty()= true){
+      message += "Passed";
+      } else{
+       message+= "Failed";
+        } 
+   //End test      
 }//End Class
