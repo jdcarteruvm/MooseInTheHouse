@@ -71,6 +71,19 @@ public class MITH_Hand{
     }//End removeCard (one param)
     
     /*************************************************
+    * isEmpty() checks to see if the players hand is *
+    * empty.Returns true if it is and false otherwise*
+    *************************************************/
+    public boolean isEmpty(){
+        if (hand.size() == 0)
+            return true;
+        else 
+            return false;
+    }//End empty
+
+    
+    
+    /*************************************************
      * print() returns, and prints to the system,    *
      * the string value of each card in the player's *
      * current hand.                                 *
