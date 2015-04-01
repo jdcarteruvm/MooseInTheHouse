@@ -138,8 +138,8 @@ public class MITH_Deck{
      * randomized deck.                              *
      *************************************************/
     public void reset(){
-        MITH_Deck deck = new MITH_Deck();
-        Collections.shuffle(deck);
+        MITH_Deck deckm = new MITH_Deck();
+        deckm.shuffle();
     }//End reset
     
     /*************************************************
@@ -172,7 +172,7 @@ public class MITH_Deck{
     	
     	MITH_Deck MD=new MITH_Deck();
     	
-    	System.out.println(deck);
+    	System.out.println(MD);
     	System.out.println("Main deck has constructed. --->Passed.");
     	
     	int i=MD.numCards();
@@ -188,7 +188,7 @@ public class MITH_Deck{
     	System.out.println("compare with the actually 'first' card.");
     	
     	MD.shuffle();
-    	System.out.println("new deck is: "+ deck);
+    	System.out.println("new deck is: "+ MD);
     	
 //    	MD.removeMith();
 //    	for(int s=0; s<deck.size(); s++){

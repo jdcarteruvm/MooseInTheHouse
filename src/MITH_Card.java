@@ -209,8 +209,8 @@ public class MITH_Card{
         
         System.out.println(message);
 
-        for (int i = 0; i < 5; i++){ // 4 rooms
-            for (int j = 0; j < 5; j++){ // 5 of each
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j < 5; j++){ 
                 // create card Type i, Value j
                 card = new MITH_Card(i, j);
                 message = "Testing MITH_Card(" + cardList[i] + ", " + roomList[j] +"): ";
@@ -223,12 +223,13 @@ public class MITH_Card{
                     message += "(string) " + MITH_Card.roomList[card.getRoom()];
                     message += "\n ---> Image name: ";
                     message += card.getImage();
+                    message += "\n ---> toString(): " + card.toString();
                 }//if
                 else
                     message += "FAIL.";
                 System.out.println(message);
-            }//end 5xfor-loop
-        }//end 4xfor-loop ROOMS
+            }//end for
+        }//end for
         
         // NOTE: POSSIBLE BUG FOUND REGARDING ROOMTYPE VALUE.
         // When testing every iteration of MITH_Card(), notice that
@@ -242,9 +243,11 @@ public class MITH_Card{
         // we want the card to output the following when a getter method is used:
         // cardType = 4 ("Moose in the House")
         // roomType = 4 ("")
-        // However, the card output reads as follows:
+        // toString = "Moose in the House"
+        // However, the current card output reads as follows:
         // cardType = 4 ("Moose in the House")
         // roomType = 2 ("Kitchen")
+        // toString = "Moose in the House Kitchen"
         
         System.out.println("\n---------------------------------");
         System.out.println("  MITH_Card() Testing complete.");
