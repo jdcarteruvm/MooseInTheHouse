@@ -81,6 +81,14 @@ public class MITH_Hand{
             return false;
     }//End empty
 
+    /*************************************************
+    * getSize() returns the number of cards in the   *
+    *           hand
+    *************************************************/
+    public boolean getSize(){
+        return hand.size();
+    }//End getSize
+
     
     
     /*************************************************
@@ -114,7 +122,8 @@ public class MITH_Hand{
      MITH_Hand hand = new MITH_Card();
       
       //Testing addCard()
-     if (hand.size = 0){
+      
+     if (hand.size() == 0){
       hand.add(c)
       message += "Passed.";
      }    
