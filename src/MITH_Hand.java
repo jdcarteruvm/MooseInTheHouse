@@ -53,6 +53,7 @@ public class MITH_Hand{
             card = hand.get(i);
             if (card.getType() == type && card.getRoom() == room){
                 hand.remove(i);
+                return;
             }
         }
     }//End removeCard (two params)
@@ -66,6 +67,7 @@ public class MITH_Hand{
             card = hand.get(i);
             if (c.getType() == card.getType() && c.getRoom() == card.getRoom()){
                 hand.remove(i);
+                return;
             }
         }
     }//End removeCard (one param)
@@ -85,11 +87,25 @@ public class MITH_Hand{
     * getSize() returns the number of cards in the   *
     *           hand
     *************************************************/
-    public boolean getSize(){
+    public int getSize(){
         return hand.size();
     }//End getSize
 
-    
+    /*************************************************
+     * hasCard(cardType) - checks to see if the hand *
+     * has a certain type of card                    *
+     * FCTVAL == true -> there is at least one       *
+     * instance of cardType in the hand              *
+     *************************************************/
+    public boolean hasCardType(int cardType) {
+      for (int i=0; i < hand.size(); i++){
+      	card = hand.get(i);
+      	if (card.getType() == cardType) {
+      		return true;
+      	}
+      }
+      return false;
+    }
     
     /*************************************************
      * print() returns, and prints to the system,    *
@@ -104,13 +120,34 @@ public class MITH_Hand{
         }else{
             for (int i=0; i < hand.size(); i++){
                 card = hand.get(i);
-                string += "Type: " + card.getType() + " | Room: " + MITH_Card.roomList[card.getRoom()] + "\n";
+                string += card.toString() + "\n";
             }
         }
         System.out.println(string);
         return string;
     }//End print
+  
+  /********************************************************* 
+   numMoose() - counts the number of moose cards in the hand
+   *********************************************************/ 
+  public int numMoose() {
+  	int ct = 0;
+  	
+   	for(int i = 0; i < hand.size(); i++)
+   	{
+   		card = hand.get(i);
+   		if(card.getType() == MITH_Card.ROOMMOOSE) {
+   			ct++;
+   		}
+   	}
+   	
+   	return ct;
+  }
    
+   
+   /*******************************************
+    main() test driver for the hand class
+    *******************************************/
     public static void main(String [] args){
        
         String message = ""; 
@@ -119,12 +156,13 @@ public class MITH_Hand{
         System.out.println(" ----------------------------\n");
 
         //TEST 
-        MITH_Hand test_hand = new MITH_Card();
+        MITH_Hand test_hand = new MITH_Hand();
+        MITH_Card test_card = new MITH_Card();
         
         //Testing addCard()
-        if (test_hand.size = 0){
-         test_hand.add(addCard);
-         System.out.println(test_hand.size);
+        if (test_hand.getSize() == 0){
+         test_hand.addCard(test_card);
+         System.out.println(test_hand.getSize());
          message += "Passed.";
         }    
         else{
@@ -132,16 +170,16 @@ public class MITH_Hand{
          System.out.println(message);
         } 
 
-       if (test_hand.size = i){
-        test_hand.remove(i);
-        System.out.println(test_hand.size);
-        message += "Passed.";
-        } 
-        else 
-            message += "Failed.";
+//       if (test_hand.getSize() == i){
+//        test_hand.remove(i);
+//        System.out.println(test_hand.getSize());
+//        message += "Passed.";
+//        } 
+//        else 
+//            message += "Failed.";
             
         //Testing isEmpty()
-        if (test_hand.isEmpty()= true){
+        if (test_hand.isEmpty()== true){
          message += "Passed";
         } else{
             message+= "Failed";

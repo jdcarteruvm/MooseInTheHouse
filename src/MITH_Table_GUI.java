@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
-
+import javax.swing.border.Border;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class MITH_Table_GUI extends JFrame
 {
@@ -27,7 +30,9 @@ public class MITH_Table_GUI extends JFrame
    
    public MITH_Table_GUI() 
    {
-      JPanel table = new JPanel();
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   
+		  JPanel table = new JPanel();
       table.setLayout(new BoxLayout(table, BoxLayout.X_AXIS));
       
       
@@ -38,7 +43,7 @@ public class MITH_Table_GUI extends JFrame
       
       
       
-      JPanel playArea = new JPanel();
+      JPanel playArea = new PlayPanel();
       JPanel handArea = new JPanel();
       
       leftPanel.add(playArea);
@@ -85,20 +90,49 @@ public class MITH_Table_GUI extends JFrame
       
       JLabel label2 = new JLabel("Play Area");
       playArea.add(label2);
+      
+      Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
+      Border playBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10), loweredBevel);
+      
+      playArea.setBorder(playBorder);
       playArea.setPreferredSize(new Dimension(700, 450));
-      playArea.setBackground(Color.GREEN);
+      playArea.setBackground(new Color(25,150,50));
       
       JLabel label3 = new JLabel("Hand Area");
       handArea.add(label3);
       handArea.setPreferredSize(new Dimension(700, 150));
-      handArea.setBackground(Color.YELLOW);
+      handArea.setBackground(new Color(25,150,50));
       add(table);
       setVisible(true);
       
    }
    
    
-   
+	 private class PlayPanel extends JPanel {
+	 	
+	 	private BufferedImage mith;
+	 	private BufferedImage bed;
+		private BufferedImage bedMoose;
+		
+		public PlayPanel() {
+			try {
+				mith = ImageIO.read(new File("../resources/images/30dpi/moose-in-the-house.png"));
+				bed = ImageIO.read(new File("../resources/images/30dpi/bed.png"));
+				bedMoose = ImageIO.read(new File("../resources/images/30dpi/bed-moose.png"));
+			} catch (IOException ex) {
+				System.out.println(ex.getMessage());
+			} // end IO try/catch
+		}
+		
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.drawImage(mith, 100, 70, null);
+			g.drawImage(bed, 200, 70, null);
+			g.drawImage(bedMoose, 210, 65, null);
+		}
+	}
+	 	   
    
    private class ButtonListener implements ActionListener
    {

@@ -26,6 +26,7 @@ public class MITH_House {
   // add card attempts to add a card to the house in the first appropriate slot that is available
   public Boolean addCard(MITH_Card card){
     
+    // if time allows this would probably be better replaced by switch statement
     // add a Moose in the House card to the player's house
     if(card.getType() == MITH_Card.MITH)
     {
@@ -107,6 +108,24 @@ public class MITH_House {
     
     return output;
   }
+  
+  /*********************************************************
+   numEmpty() - returns the number of empty rooms in the
+   house
+   *********************************************************/
+  public int numEmpty() {
+  	
+  	int ct = 0;
+  	
+  	for(int i = 0; i < rooms.size(); i++) {
+  		if(rooms.get(i).top_card == null) {
+  			ct++;
+  		}
+  	}
+  	
+  	return ct;
+  }
+  
   
   public static void main(String[] args) {
     MITH_House house = new MITH_House();
@@ -238,6 +257,7 @@ public class MITH_House {
     // PASS => house has a moosed living room, doored bathroom and empty kitchen
     System.out.println("Current house: " + house.toString() + "\n");
 		
+		System.out.println("Current house has " + house.numEmpty() + " empty rooms;");
 		
   } // end main
  
