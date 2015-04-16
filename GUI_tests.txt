@@ -1,0 +1,40 @@
+X		Show the window
+		
+X		Three subpanels
+		
+X		subpanels set to approximate size
+		
+X		add buttons to the button menu
+		
+		change appearance of buttons to match prototype
+		
+		set position of buttons to match prototype
+		
+-		attach buttons to appropriate listeners to open sub-windows
+		
+X		add logo to menu pane
+		
+X		add border to play area
+		
+X		demonstrate ability to display card graphics in play area
+
+		add card graphics using a clickable object
+		
+		place cards with random rotations to simulate people placing cards on a table
+		
+		show players hand in hand area in manner like a person holding cards
+		
+		display an entire house on the play area
+		
+		show computer player's portrait in play area
+		
+		show back of computer player's cards in hand on their portrait
+		
+		show multiple players' houses on the play area
+
+
+
+
+
+
+
