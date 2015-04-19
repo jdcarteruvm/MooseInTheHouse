@@ -28,6 +28,7 @@ class MITH_Player {
 	public MITH_Player(String name, String pictureFilename, String soundFilestem) {
 		
 		my_hand = new MITH_Hand();
+		my_house = new MITH_House();
 		
 		this.name = name;
 		 
@@ -35,7 +36,7 @@ class MITH_Player {
 		
 		this.soundFilestem = soundFilestem;
 		
-	}
+	} // end MITH_Player(String, String, String)
 	
 	/*********************************************************
 	 setGame(game) - registers the game the player is playing
@@ -44,14 +45,15 @@ class MITH_Player {
 	public void setGame(MITH_Game g)
 	{
 		game = g;
-	}
+	} // end setGame
 	
 	/*********************************************************
 	 getName() - returns the player's name
 	 *********************************************************/
 	public String getName() {
 		return name;
-	}
+		
+	} // end getName
 	
 	/*********************************************************
 	 numMoose() - returns the number of moose the player
@@ -59,7 +61,7 @@ class MITH_Player {
 	 *********************************************************/
 	public int numMoose() {
 		return my_hand.numMoose();
-	}
+	} // end numMoose
 	
 	/*********************************************************
 	 preparePicture - opens the image specified by filename
@@ -73,7 +75,7 @@ class MITH_Player {
 		} catch (IOException e) {
 			System.out.println("Error opening player image: " + path + filename + ": " + e.getMessage());
 		}
-	}
+	} // end preparePicture
 
 
 	/*********************************************************
@@ -83,8 +85,23 @@ class MITH_Player {
 		
 		return my_house;
 		
-	}		
-		
+	} // end getHouse
+	
+	/*********************************************************
+	 getHand() - returns a reference to the player's hand
+	 *********************************************************/
+	public MITH_Hand getHand() {
+		return my_hand;
+	}
+	
+	
+	/*********************************************************
+	 () - attempts to play a card from player's hand
+	 *********************************************************/
+//	public void playACard() {
+//		if	
+
+
 	/********************************************************* 
 	 playedMoose() - notifies the player that a moose was
 	 recently played on their house
@@ -96,11 +113,17 @@ class MITH_Player {
 		// to determine if the player wants to play a trap card
 		// or not
 		if(my_hand.hasCardType(MITH_Card.TRAP)) {
-			game.playTrap();
-			my_hand.removeCard(MITH_Card.TRAP, MITH_Card.NON);
-			drawCard();
+			MITH_Card trapCard = my_hand.removeCard(MITH_Card.TRAP, MITH_Card.NON);
+			
+			if(game.playTrap(this, trapCard)) {
+				drawCard();
+			}
+			else {
+				my_hand.addCard(trapCard);
+			}
+				
 		}
-	}
+	} // end playedMoose
 	
 	
 	/********************************************************* 
@@ -108,17 +131,38 @@ class MITH_Player {
 	 and add it to this player's hand
 	 *********************************************************/
 	public void drawCard() {	
-		if(my_hand.getSize() <= 5)
+		if(my_hand.getSize() <= MITH_Game.MAXCARDSINHAND) // <= because a hand can temporarily have more than 5 cards (draw first, then play)
 		{
 			MITH_Card card = game.drawFromDeck();
 			if(card != null) {
 				my_hand.addCard(card);
 			}	
 		}
-	}
+	} // end drawCard
+	
+	/*********************************************************
+	 giveCard() - attempts to give a card to a player for 
+	 their hand
+	 **********((*********************************************/
+	public void giveCard(MITH_Card card) {
+		if(my_hand.getSize() < MITH_Game.MAXCARDSINHAND)
+		{
+			if(card != null) {
+				my_hand.addCard(card);
+			}
+		}
+	} // end giveCard
 	
 	
-			
+	/*********************************************************
+	 handToString() - utility function to export toString 
+	 method on this player's hand
+	 *********************************************************/
+	public String handToString() {
+		return my_hand.toString();
+	} // end handToString	
+	
+	
 	/*********************************************************
 	 main - testing and verification of the player class
 	 *********************************************************/
@@ -131,11 +175,11 @@ class MITH_Player {
 		for(int i = 0; i < 5; i++)
 			player1.drawCard();
 		
-		player1.my_hand.print();
+		System.out.println(player1.my_hand.toString());
 		
 		System.out.println(player1.getName() + " has " + player1.numMoose() + " moose in his or her hand.");
 		
-	}
+	} // end main
 		
 			
-}
+} // end MITH_Player

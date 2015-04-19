@@ -48,14 +48,16 @@ public class MITH_Hand{
      * removeCard() removes a card of a certain      *
      * type and/or room type.                        *
      *************************************************/
-    public void removeCard(int type, int room){
+    public MITH_Card removeCard(int type, int room){
         for (int i=0; i < hand.size(); i++){
             card = hand.get(i);
             if (card.getType() == type && card.getRoom() == room){
                 hand.remove(i);
-                return;
+                return card;
             }
         }
+        
+        return null;
     }//End removeCard (two params)
     
     /*************************************************
@@ -108,24 +110,59 @@ public class MITH_Hand{
     }
     
     /*************************************************
-     * print() returns, and prints to the system,    *
+     * toString() returns, and prints to the system,    *
      * the string value of each card in the player's *
      * current hand.                                 *
      *************************************************/
-    public String print(){
+    public String toString(){
         String string = "";
         
         if (hand.size() == 0){
-            string = "Your hand is empty.";
+            string = "Empty.";
         }else{
             for (int i=0; i < hand.size(); i++){
                 card = hand.get(i);
                 string += card.toString() + "\n";
             }
         }
-        System.out.println(string);
+       // System.out.println(string);
         return string;
-    }//End print
+    }//End toString
+    
+  /**********************************************************
+   sampleHand - fills the hand with a selection of cards  
+   for testing purposes
+   **********************************************************/
+  public void sampleHand(int i) {
+  	
+  	// make sure we start with a blank house
+  	hand = new ArrayList<MITH_Card>();
+  	
+  	switch(i) {
+  		case 1: 
+  			addCard(new MITH_Card()); // add a moose in the house card
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.BATH));
+  			addCard(new MITH_Card(MITH_Card.DOOR, MITH_Card.NON));
+  			addCard(new MITH_Card(MITH_Card.TRAP, MITH_Card.NON));
+  			break;
+  		
+  		case 2: 
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.BED));
+  			addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.BATH));
+   			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.KITCHEN));
+ 			break;
+  		default: 
+   			addCard(new MITH_Card()); // add a moose in the house card
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.BATH));
+  			addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.LIVING));
+  	}
+  	
+  }
   
   /********************************************************* 
    numMoose() - counts the number of moose cards in the hand

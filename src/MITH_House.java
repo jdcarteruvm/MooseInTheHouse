@@ -82,10 +82,10 @@ public class MITH_House {
   }
     
     
-  /*************************************************
-   * toString - makes a readable string out of the *
-   *            house                              *
-   *************************************************/
+  /*******************************************************
+   * toString - makes a human readable string out of the *
+   *            house                                    *
+   *******************************************************/
   public String toString() {
     String output = "";
     
@@ -109,6 +109,40 @@ public class MITH_House {
     return output;
   }
   
+  /**********************************************************
+   sampleHouse - fills the house with a selection of rooms  
+   for testing purposes
+   **********************************************************/
+  public void sampleHouse(int i) {
+  	
+  	// make sure we start with a blank house
+  	this.entry = null;
+  	this.rooms = new ArrayList<House_Slot>();
+  	
+  	switch(i) {
+  		case 1: 
+  			addCard(new MITH_Card()); // add a moose in the house card
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.LIVING));
+  			break;
+  		
+  		case 2: 
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.BATH));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.BATH));
+  			break;
+  		default: 
+   			addCard(new MITH_Card()); // add a moose in the house card
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.LIVING));
+  			addCard(new MITH_Card(MITH_Card.ROOMEMPTY, MITH_Card.BATH));
+  			addCard(new MITH_Card(MITH_Card.ROOMMOOSE, MITH_Card.LIVING));
+  	}
+  	
+  }
+  		
+  		
+  		
+  		
   /*********************************************************
    numEmpty() - returns the number of empty rooms in the
    house
