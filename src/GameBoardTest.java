@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Component;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -29,27 +30,39 @@ import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 public class GameBoardTest extends JLayeredPane {
 
-		private static final Dimension GAME_BOARD_SIZE = new Dimension(640, 480);
+		private static final Dimension GAME_BOARD_SIZE = new Dimension(700, 500);
     JPanel backingPanel;
+    JPanel player1;
+    JPanel player2;
+    JPanel player3;
+    JPanel player4;
+    
     JPanel left;
 		JPanel right;
 		
-		JLabel fromCard;
-		JLabel toCard;
+		MITH_Label fromCard;
+		MITH_Label toCard;
 		Random randomGenerator;		
-		
+		MITH_Deck deck;
+		static final String imageDirPath = "..\\resources\\images\\30dpi\\";
 		
 		
 		ArrayList<ImageIcon> images;
 		
     public GameBoardTest() {
-
+				
+				deck = new MITH_Deck();
+				deck.shuffle();
+				// shorten the deck for testing purposes:
+//				for(int i = 0; i < 48; i++)
+//					deck.draw();
+				
 				randomGenerator = new Random();
 				
 //        setTitle("Complex Example");
 				images = new ArrayList<ImageIcon>();
 				
-				File folder = new File("..\\resources\\images\\30dpi\\");
+				File folder = new File(imageDirPath);
 				File[] listOfFiles = folder.listFiles();
 				
 				for(int i = 0; i < listOfFiles.length; i++) {
@@ -64,38 +77,54 @@ public class GameBoardTest extends JLayeredPane {
 				
 //				System.out.println(images.isEmpty() + "   " + images.size());
 				
-        backingPanel  = new JPanel(new FlowLayout(FlowLayout.LEFT, 50, 15));
+        backingPanel  = new JPanel(new GridLayout(4,1, 7, 0));
 				backingPanel.setSize(GAME_BOARD_SIZE);
-        JButton cardb = new JButton("Get Random Card");
-        cardb.setFocusable(false);
+//        JButton cardb = new JButton("Get Random Card");
+//        cardb.setFocusable(false);
+				
+				player1 = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
+				player1.setBackground(new Color(50,150, 50));
+				player2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
+				player2.setBackground(new Color(50,130, 50));
+				player3 = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
+				player3.setBackground(new Color(50,150, 150));
+				player4 = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
+				player4.setBackground(new Color(50,190, 50));
+				
+				backingPanel.add(player1);
+				backingPanel.add(player2);
+				backingPanel.add(player3);
+				backingPanel.add(player4);
+				
 				
         left = new JPanel();
-        fromCard = new JLabel();
+        fromCard = new MITH_Label();
         
         fromCard.setIcon(images.get(0));
         left.add(fromCard);
         left.setBackground(Color.green);
-        left.setPreferredSize(new Dimension(85, 115));
+        left.setPreferredSize(new Dimension(75, 110));
 
-        cardb.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                int index = randomGenerator.nextInt(images.size());
-                fromCard.setIcon(images.get(index));
-//                Color color = clr.showDialog(panel, "Choose Color", Color.white);
-//                left.setBackground(color);
-            }
-        });
+//        cardb.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent event) {
+//                int index = randomGenerator.nextInt(images.size());
+//
+//                fromCard.setIcon(images.get(index));
+////                Color color = clr.showDialog(panel, "Choose Color", Color.white);
+////                left.setBackground(color);
+//            }
+//        });
 
         right = new JPanel();
-        toCard = new JLabel();
+        toCard = new MITH_Label();
         right.setBackground(Color.blue);
-        right.setPreferredSize(new Dimension(85, 115));
+        right.setPreferredSize(new Dimension(75, 110));
         right.add(toCard);
 				
 				setPreferredSize(GAME_BOARD_SIZE);
-        backingPanel.add(cardb);
-        backingPanel.add(left);
-        backingPanel.add(right);
+//        backingPanel.add(cardb);
+        player1.add(left);
+        player2.add(right);
         add(backingPanel, JLayeredPane.DEFAULT_LAYER);
         
         MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
@@ -105,7 +134,7 @@ public class GameBoardTest extends JLayeredPane {
     }
 
     private class MyMouseAdapter extends MouseAdapter {
-        private JLabel dragLabel = null;
+        private MITH_Label dragLabel = null;
         private int dragLabelWidthDiv2;
         private int dragLabelHeightDiv2;
         private JPanel clickedPanel = null;
@@ -113,25 +142,45 @@ public class GameBoardTest extends JLayeredPane {
         @Override
         public void mousePressed(MouseEvent me) {
             clickedPanel = (JPanel) backingPanel.getComponentAt(me.getPoint());
+            
             Component[] components = clickedPanel.getComponents();
             if (components.length == 0) {
+            		System.out.println("no component clicked");
                 return;
             }
+            else
+            {
+            	if(components[0] instanceof JPanel) {
+            		clickedPanel = (JPanel) components[0];
+            		components = clickedPanel.getComponents();
+            	}
+            	
+//            	System.out.println("There are " + components.length + " components under there.");
+//            	System.out.println(components[0].toString());
+            }
             // if we click on jpanel that holds a jlabel
-            if (components[0] instanceof JLabel) {
-
+            if (clickedPanel != right && 
+            		components[0] instanceof JLabel && 
+								!deck.isEmpty()) {
+								
                 // remove label from panel
-                dragLabel = (JLabel) components[0];
+                dragLabel = (MITH_Label) components[0];
+                
                 clickedPanel.remove(dragLabel);
                 clickedPanel.revalidate();
                 clickedPanel.repaint();
                 
                 // replace the removed panel with a new one
 				        if(dragLabel == fromCard) {
-				        	fromCard = new JLabel();
-				        
-					        fromCard.setIcon(images.get(0));
-									left.add(fromCard);
+                	dragLabel.card = deck.draw();
+                	dragLabel.setIcon(new ImageIcon(imageDirPath + dragLabel.card.getImage()));
+				        	
+				        	if(!deck.isEmpty()) {
+				        		
+				        		fromCard = new MITH_Label();
+					        	fromCard.setIcon(images.get(0));
+										left.add(fromCard);
+									}
 								}
 								
                 dragLabelWidthDiv2 = dragLabel.getWidth() / 2;
@@ -165,8 +214,14 @@ public class GameBoardTest extends JLayeredPane {
             
             JPanel droppedPanel = (JPanel) backingPanel.getComponentAt(me.getPoint());
             Component[] components = droppedPanel.getComponents();
-
-
+						if(components.length == 0) {
+							return;
+						} else {
+	           	if(components[0] instanceof JPanel) {
+            		droppedPanel = (JPanel) components[0];
+            		components = droppedPanel.getComponents();
+            	}
+            }
             // remove the label that's already there if there is one 
             // (this will change to ignore if there's already one there)
             if (droppedPanel == right &&
@@ -174,6 +229,7 @@ public class GameBoardTest extends JLayeredPane {
             		components[0] instanceof JLabel) {
             	droppedPanel.remove(components[0]);
               droppedPanel.add(dragLabel);
+              System.out.println("Card played: " + dragLabel.card.toString());
               droppedPanel.revalidate();
             }
             
@@ -210,6 +266,10 @@ public class GameBoardTest extends JLayeredPane {
     			createAndShowUI();
     		}
     	});
+  	}
+  	
+  	private class MITH_Label extends JLabel {
+  		public MITH_Card card;
   	}
 }
 

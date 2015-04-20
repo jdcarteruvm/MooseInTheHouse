@@ -18,3 +18,5 @@ We should probably consider keeping this file up to date so we have good notes o
 			Note the main method with test cases (ongoing at this point) as a model of the kind of documented testing we can reference in our deliverable due Wednesday. We should have something similar for each class in our program - excluding GUI classes.
  
 4/15: (Jon) I added an updated GUI class that shows some rudimentary card objects - more of a hack than anything - also added a GUI_test outline to help guide GUI development
+
+4/19: (Jon) I updated the GameBoardTest class. It's now linked to a deck so it is essentially a prototype for our draw pile. It's a little wonky if you don't drag the card to the right place, but that's because the default action I envision in the situation, adding it to the hand, doesn't exist yet. Also updated Card and House and some of the pictures for consistent so the GUI can grab the pictures.

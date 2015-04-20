@@ -35,7 +35,7 @@ public class MITH_Card{
     public static final int NON       = 4;
     
     // Array of card types, indexed according to integer values above.
-    public static final String[] cardList = {"Empty", "Moosed", "Door", "Trap", "Moose in the House"};
+    public static final String[] cardList = {"Empty", "Moosed", "Door", "Trap", "MITH"};
     
     // Initialize variable for CARD TYPE, one of:
     // ROOMEMPTY, ROOMMOOSE, DOOR, TRAP, MITH
@@ -48,7 +48,7 @@ public class MITH_Card{
     
     // Array of room types, with fourth index containing empty string for non-room types.
     public static final String[] roomList = {"Bedroom", "Living Room", "Kitchen", "Bathroom", ""};
-    
+    public static final String[] roomImageList = {"bed", "living", "kitchen", "bath", ""};
     // Initialize variable for CARD IMAGE name.
     private String cardImage;
     
@@ -89,18 +89,18 @@ public class MITH_Card{
         // SET CARD'S IMAGE NAME (.png)
         // if type Room, either Empty or Occupied,
         if (type == ROOMEMPTY){
-            cardImage = roomList[roomType] + ".png";
+            cardImage = roomImageList[roomType] + ".png";
         }else if (type == ROOMMOOSE){
-            cardImage = roomList[roomType] + "Moose.png";
+            cardImage = roomImageList[roomType] + "-moose.png";
         }
         // else, if type is anything else,
         // set the appropriate image name
         else if (type == DOOR){
-            cardImage = "Door.png";
+            cardImage = "door.png";
         }else if (type == TRAP){
-            cardImage = "Trap.png";
+            cardImage = "trap.png";
         }else if (type == MITH){
-            cardImage = "MitH.png";
+            cardImage = "moose-in-the-house.png";
         }//end else if
         
     }//End Card (two params)
@@ -130,6 +130,7 @@ public class MITH_Card{
     public String getImage(){
         return cardImage;
     }//End getImage
+    
     
     /*************************************************
      * print() returns, and prints to the system, the*

@@ -141,7 +141,12 @@ public class MITH_House {
   }
   		
   		
-  		
+  /*********************************************************
+   entryEmpty() - checks to see if the house entry is empty
+   *********************************************************/
+  public boolean entryEmpty() {
+  	return entry == null;
+  }
   		
   /*********************************************************
    numEmpty() - returns the number of empty rooms in the
