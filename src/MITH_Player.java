@@ -28,7 +28,7 @@ class MITH_Player {
 	public MITH_Player(String name, String pictureFilename, String soundFilestem) {
 		
 		my_hand = new MITH_Hand();
-		my_house = new MITH_House();
+//		my_house = new MITH_House();
 		
 		this.name = name;
 		 
@@ -81,11 +81,11 @@ class MITH_Player {
 	/*********************************************************
 	 getHouse() - returns a reference to the player's house
 	 *********************************************************/
-	public MITH_House getHouse() {
+	public void setHouse(MITH_House h) {
 		
-		return my_house;
+		my_house = h;
 		
-	} // end getHouse
+	} // end setHouse
 	
 	/*********************************************************
 	 getHand() - returns a reference to the player's hand

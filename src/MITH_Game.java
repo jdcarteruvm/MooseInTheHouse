@@ -51,7 +51,7 @@ public class MITH_Game {
 		
 		if(card.getType() == MITH_Card.TRAP &&
 //			 lastmove.player != player &&
-			 lastmove.house == player.getHouse() &&
+			 lastmove.house == houses.get(players.indexOf(player)) &&
 			 lastmove.card.getType() == MITH_Card.ROOMMOOSE) {
 			return true;
 		}
@@ -59,6 +59,13 @@ public class MITH_Game {
 		return false;
 	} //end playTrap
 	
+	/**********************************************************
+	 playMITH - plays a Moose in the House card  if it's a
+	 legal move
+	 **********************************************************/
+	public boolean playMITH(MITH_Player player, MITH_Card card) {
+		return houses.get(players.indexOf(player)).addCard(card);
+	}
 	
 	/*********************************************************
 	 clearLastMove - clear the last move so trap cards can no
@@ -103,7 +110,7 @@ public class MITH_Game {
 		}
 	} // end dealCards
 	
-	
+		
 	/*********************************************************
 	 addPlayer - adds a player to the game if there are 
 	 currently fewer than MAXPLAYERS players total (one player should
@@ -117,8 +124,10 @@ public class MITH_Game {
 		if(players.size() < MAXPLAYERS && !players.contains(player)) {
 			
 			players.add(player); 
-			houses.add(player.getHouse());
+			MITH_House newHouse = new MITH_House();
+			houses.add(newHouse);
 			
+			player.setHouse(newHouse);			
 			player.setGame(this);
 			
 			return true;
@@ -140,7 +149,7 @@ public class MITH_Game {
 			playerHands += players.get(i).handToString() + "\n";
 			
 			playerHouses += players.get(i).getName() + "'s house:\n";
-			playerHouses += players.get(i).getHouse().toString() + "\n\n";
+			playerHouses += houses.get(i).toString() + "\n\n";
 		}
 		
 		String deckState = "Draw pile has " + deck.numCards() + " cards remaining.\n";
@@ -213,11 +222,12 @@ public class MITH_Game {
 		player2.getHand().sampleHand(2);
 		
 		
-		player1.getHouse().sampleHouse(1);
-		player2.getHouse().sampleHouse(2);
+		game.houses.get(game.players.indexOf(player1)).sampleHouse(1);
+		game.houses.get(game.players.indexOf(player2)).sampleHouse(2);
 		
 		// verify that it worked
 		System.out.println(game.stateOfGame());
+		
 		
 		
 	} // test2PlayerNR
