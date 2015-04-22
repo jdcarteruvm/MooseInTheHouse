@@ -2,6 +2,7 @@
  * CS 205 - Software Engineering *
  * Moose in the House            *
  * GameStats_GUI                 *
+ * Authors: Joey                 *
  *********************************/
 
 /** ####################################################### **

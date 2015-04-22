@@ -94,6 +94,10 @@ private class ButtonListener implements ActionListener
          {
             MITH_Help_GUI helpWindow = new MITH_Help_GUI();
          }
+         if(e.getSource() == howToPlayButton)
+         {
+             MITH_HowToPlay_GUI howWindow = new MITH_HowToPlay_GUI();
+         }
          if(e.getSource() == quitButton)
          {
             System.exit(0);

@@ -25,6 +25,9 @@ import java.awt.image.BufferedImage;
 public class MITH_HowToPlay_GUI extends JFrame 
 {
 
+    public MITH_HowToPlay_GUI(){
+        createFrame();
+    }
 
    public static void createFrame() 
    {
@@ -71,7 +74,7 @@ public class MITH_HowToPlay_GUI extends JFrame
 
 public static void main(String[] args) 
 {
-     createFrame();
+     MITH_HowToPlay_GUI window = new MITH_HowToPlay_GUI();
     
     
 }
