@@ -31,10 +31,10 @@ import javax.swing.JFrame;
 public class MITH_Table_GUI extends JFrame 
 {
    private JPanel table;
-   final int WINDOW_WIDTH = 870;
+   final int WINDOW_WIDTH = 868;
    final int WINDOW_HEIGHT= 620;
    
-   final int MENU_WIDTH = 200; 
+   final int MENU_WIDTH = 202; 
    final int MENU_HEIGHT= 300;
    
    
@@ -87,11 +87,13 @@ public class MITH_Table_GUI extends JFrame
       
       //leftPanel.add(playArea);
       //leftPanel.add(handArea);
-      leftPanel.add(new GameBoardTest(4));
+       
+      //ADD THE GAME GUI
+      leftPanel.add(new MITH_Game_Board(4));
       rightPanel.add(menuPanel);
       
+       
       table.add(leftPanel);
-     
       table.add(rightPanel);
       //table.add(menuPanel);
        
@@ -194,7 +196,8 @@ public class MITH_Table_GUI extends JFrame
      
       
       Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
-      Border menuBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5), loweredBevel);
+      //Border menuBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5), loweredBevel);
+      Border menuBorder = BorderFactory.createEmptyBorder(10, 5, 10, 5);
       
        
       menuPanel.add(mooseLabel); 
@@ -204,7 +207,7 @@ public class MITH_Table_GUI extends JFrame
       menuPanel.add(optionsButton);
       menuPanel.add(quitButton);
       menuPanel.setLayout(new GridLayout(15,1)); // GRID LAYOUT
-      menuPanel.setBackground(new Color(70,200,20)); // MENU BACKGROUND COLOR
+      menuPanel.setBackground(new Color(0,128,0)); // MENU BACKGROUND COLOR
       menuPanel.setBorder(menuBorder);
       //menuPanel.setPreferredSize(new Dimension(35, 300));
     
