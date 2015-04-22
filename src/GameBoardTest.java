@@ -341,9 +341,12 @@ public class GameBoardTest extends JLayeredPane {
           	}
           	else if(source == handPanel) {
           		System.out.println("handPanel clicked");
-          		MITH_Label cardLabel = (MITH_Label) source.getComponentAt((int)(me.getPoint().getX() - userPanel.getX()), (int)(me.getPoint().getY() - userPanel.getY()));
-          		System.out.println(cardLabel);
-          		if(cardLabel != null) {
+          		Component component = source.getComponentAt((int)(me.getPoint().getX() - userPanel.getX()), (int)(me.getPoint().getY() - userPanel.getY()));
+          		
+//          		System.out.println(cardLabel);
+          		if(component != null && 
+         			 	component instanceof MITH_Label) {
+           			MITH_Label cardLabel = (MITH_Label) component;
           			System.out.println("Clicked on " + cardLabel.card);
           			dragLabel = cardLabel;
           			drawDragLabel = true;
