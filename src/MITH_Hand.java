@@ -131,7 +131,7 @@ public class MITH_Hand{
     }
     
     /*************************************************
-     * toString() returns, and prints to the system,    *
+     * toString() returns, and prints to the system, *
      * the string value of each card in the player's *
      * current hand.                                 *
      *************************************************/

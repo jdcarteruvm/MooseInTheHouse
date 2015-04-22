@@ -13,14 +13,17 @@ public class MITH_Game {
 	
 	private ArrayList<MITH_Player> players;
 	private ArrayList<MITH_House> houses;
-    //private ArrayList<MITH_Card> discardPile;
+  //private ArrayList<MITH_Card> discardPile;
 	
 	private int numPlayers;
 	
 	public static final int MAXPLAYERS = 4;
 	public static final int MAXCARDSINHAND = 5;
 	
-	private MITH_Move lastmove;
+	private MITH_Move lastmove; // keeps track of a move so we can be sure that player is allowed to play a trap
+	
+	private MITH_Game_Board GUI;
+	
 	
 	/*********************************************************
 	 MITH_Game() - default constructor, which creates a
@@ -34,6 +37,14 @@ public class MITH_Game {
 		houses = new ArrayList<MITH_House>();
 		
 	} //end MITH_Game()
+	
+	/**********************************************************
+	 setGUI() - registers the GUI that this game is going to 
+	 work with
+	 **********************************************************/
+	public void setGUI(MITH_Game_Board board) {
+		GUI = board;
+	}
 	
 	/**********************************************************
 	 playTrap() - handles playing a trap card: makes sure that
@@ -50,7 +61,8 @@ public class MITH_Game {
 			return false;
 		}
 		
-		if(move.card.getType() == MITH_Card.TRAP &&
+		if(move.roomslot >= 0 && 
+			 move.card.getType() == MITH_Card.TRAP &&
 			 lastmove.player != move.player &&
 			 houses.get(move.house) == move.player.getHouse() &&
 			 move.card.getType() == MITH_Card.ROOMMOOSE) {
@@ -75,12 +87,62 @@ public class MITH_Game {
 		
 		if(move.card.getType() == MITH_Card.MITH) {
 			if(houses.get(move.house).addCard(move.card)) {
-				clearLastMove();
+				lastmove = move;
 				return true;
 			}
 		}
 		return false;
 	}
+	
+	/*********************************************************
+	 playDoor() - attempts to play a door card on a slot in 
+	 a player's house
+	 *********************************************************/
+	public boolean playDoor(MITH_Move move) {
+		System.out.println("Door played");
+		
+		if(move.roomslot >= 0 && 
+			 move.card.getType() == MITH_Card.DOOR && 
+			 houses.get(move.house).addDoor(move.card, move.roomslot)) {
+				lastmove = move;
+				return true;
+			}
+			return false;
+	}
+	
+	
+	/*********************************************************
+	 playRoomEmpty - attempts to add an empty room to a
+	 player's house
+	 *********************************************************/
+	public boolean playRoomEmpty(MITH_Move move) {
+		System.out.println("Empty room played");
+		
+		if(move.card.getType() == MITH_Card.ROOMEMPTY &&
+			 houses.get(move.house).addCard(move.card)) {
+			 lastmove = move;
+			 return true;
+		}
+		
+		return false;
+	}
+	
+	/*********************************************************
+	 playRoomMoose - attempts to add an empty room to a
+	 player's house
+	 *********************************************************/
+	public boolean playRoomMoose(MITH_Move move) {
+		System.out.println("Moosed room played");
+		
+		if(move.roomslot >= 0 && 
+			 houses.get(move.house).addMooseRoom(move.card, move.roomslot)) {
+			lastmove = move;
+			players.get(move.house).playedMoose(move);
+			return true;
+		}
+		return false;
+	}
+	
 	
 	/*********************************************************
 	 clearLastMove - clear the last move so trap cards can no
@@ -111,6 +173,13 @@ public class MITH_Game {
 		return null;
 	} //end drawFromDeck
 	
+	/*********************************************************
+	 deckEmpty - 
+	 FCTVAL == true -> game's deck is empty
+	 *********************************************************/
+	public boolean deckEmpty() {
+		return deck.isEmpty();
+	}
 	/*********************************************************
 	 dealCards - deals out MAXCARDSINHAND cards to each of the
 	 players in the game

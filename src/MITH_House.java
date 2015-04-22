@@ -15,6 +15,7 @@ public class MITH_House {
   private House_Slot entry; // a slot for the entry of the house to hold the Moose in the House card
   private ArrayList<House_Slot> rooms;  // to hold all the rooms that can be in the house
   
+  private static final int MAX_EMPTY_ROOMS = 3;
   /********************************************************* 
    MITH_House() - is the constructor, intializing the 
    empty house arraylist and the MITH house slot
@@ -28,6 +29,8 @@ public class MITH_House {
    /********************************************************* 
    addCard() - attempts to add a card to the house in the 
    first appropriate slot that is available
+   
+   #### deprecated for adding moose rooms and doors ####
    *********************************************************/
   public boolean addCard(MITH_Card card){
     
@@ -47,7 +50,8 @@ public class MITH_House {
     } // end card type MITH
   
     // add an empty room to a house
-    if(card.getType() == card.ROOMEMPTY)
+    if(card.getType() == card.ROOMEMPTY &&
+    	numEmpty() < MAX_EMPTY_ROOMS)
     {
       rooms.add(new House_Slot(card));
       return true;
@@ -85,9 +89,39 @@ public class MITH_House {
     return false;
     
   }
-  
-  
-    
+	/***************************************************
+	 addMooseRoom 
+	 add a moosed room card to the house in a certain
+	 slot
+	 ***************************************************/
+	public boolean addMooseRoom(MITH_Card card, int slot) {
+		
+		if(entry != null && 
+			 rooms.get(slot).top_card == null &&
+		   rooms.get(slot).base_card.getRoom() == card.getRoom() && 
+		   card.getType() == MITH_Card.ROOMMOOSE)
+		{
+			rooms.get(slot).top_card = card;
+			return true;
+		}
+		
+		return false;
+	}
+
+	/***************************************************
+	 addDoor
+	 attempt to add a door to a room in the house
+	 ***************************************************/  
+	public boolean addDoor(MITH_Card card, int slot) {
+		if(rooms.get(slot).top_card == null &&
+		   card.getType() == MITH_Card.DOOR) {
+		  rooms.get(slot).top_card = card;
+		  return true;
+		}
+		
+		return false;
+	}
+		      
   public boolean removeMoose(int i) {
   	if(rooms.get(i).top_card.getType() == MITH_Card.ROOMMOOSE){
   		rooms.get(i).top_card = null;
