@@ -13,17 +13,22 @@ import java.util.*;
 public class MITH_House {
 
   private House_Slot entry; // a slot for the entry of the house to hold the Moose in the House card
-  
   private ArrayList<House_Slot> rooms;  // to hold all the rooms that can be in the house
   
-  // create an empty house
+  /********************************************************* 
+   MITH_House() - is the constructor, intializing the 
+   empty house arraylist and the MITH house slot
+   *********************************************************/
   public MITH_House() {
   
     rooms = new ArrayList<House_Slot>();
     entry = null;
   }
   
-  // add card attempts to add a card to the house in the first appropriate slot that is available
+   /********************************************************* 
+   addCard() - attempts to add a card to the house in the 
+   first appropriate slot that is available
+   *********************************************************/
   public boolean addCard(MITH_Card card){
     
     // if time allows this would probably be better replaced by switch statement
@@ -91,6 +96,23 @@ public class MITH_House {
   	
   	return false;
   }
+
+   /********************************************************* 
+   numMoose() - counts the number of moose cards in the hand
+   *********************************************************/ 
+  public int numMoose() {
+  	int ct = 0;
+  	
+   	for(int i = 0; i < rooms.size(); i++)
+   	{
+   		MITH_Card card = rooms.get(i).top_card;
+   		if(card.getType() == MITH_Card.ROOMMOOSE) {
+   			ct++;
+   		}
+   	}
+   	
+   	return ct;
+  } 
     
   /*******************************************************
    * toString - makes a human readable string out of the *
@@ -175,7 +197,9 @@ public class MITH_House {
   	return ct;
   }
   
-  
+  /********************************************************* 
+   main() - TESTING METHOD
+   *********************************************************/
   public static void main(String[] args) {
     MITH_House house = new MITH_House();
     String message;
@@ -325,19 +349,27 @@ public class MITH_House {
     private MITH_Card top_card;
      
      
-     // creates a house slot with the base card given
+   /********************************************************* 
+   House_Slot - creates a house slot with the base card
+   *********************************************************/
     House_Slot(MITH_Card base) {
       
       base_card = base; 
     }
     
-    // creates a house slot with both base and top card given
-    // might be useful for cloning - not useful in normal gameplay
+  /********************************************************* 
+   House_Slot - creates a house slot with both base and top
+   card given
+   might be useful for cloning; not useful for gameplay
+   *********************************************************/
     House_Slot(MITH_Card base, MITH_Card top) {
       base_card = base;
       top_card = top;
     }
-    
+      
+    /********************************************************* 
+   toString() - translates the hand into a returnable string
+   *********************************************************/
     public String toString() {
       String output = "";
       

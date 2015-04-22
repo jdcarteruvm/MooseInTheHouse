@@ -12,7 +12,8 @@ import java.io.*;
 
 class MITH_Player {
 
-	private String name; // i am adding a comment
+    // Initialize shared variables
+	private String name; // player name
 	private BufferedImage picture; // filename for a image for this player to be utilized by a GUI
 	private MITH_Hand my_hand; // the player's hand
 	private MITH_House my_house; // the player's house cards
@@ -157,6 +158,12 @@ class MITH_Player {
 		}
 	} // end giveCard
 	
+    /*********************************************************
+	 addToHouse() - adds the card to player's house
+	 **********((*********************************************/
+    public void addToHouse(MITH_Card card){
+        my_house.addCard(card);
+    }
 	
 	/*********************************************************
 	 handToString() - utility function to export toString 

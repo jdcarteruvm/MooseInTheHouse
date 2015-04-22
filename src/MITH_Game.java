@@ -13,6 +13,7 @@ public class MITH_Game {
 	
 	private ArrayList<MITH_Player> players;
 	private ArrayList<MITH_House> houses;
+    //private ArrayList<MITH_Card> discardPile;
 	
 	private int numPlayers;
 	
@@ -165,11 +166,20 @@ public class MITH_Game {
 		}
 		
 		String deckState = "Draw pile has " + deck.numCards() + " cards remaining.\n";
+        //When using "sampleHand/sampleHouse", we aren't drawing directly from the deck.
 		
 		return playerHands + "\n" + playerHouses + "\n" + deckState;
 	} 
-
-
+    
+    /*********************************************************
+	 numPlayers - returns the number of players in the game 
+	 *********************************************************/
+    public int numPlayers() {
+        
+        return players.size();
+    }
+    
+    
 	/*********************************************************
 	 test2PlayerNR - simulates the playing of a game between two 
 	 opponents to test how each of the operations is working
@@ -184,26 +194,26 @@ public class MITH_Game {
 		MITH_Player player4 = new MITH_Player("Batman", "batman.png", "batman");
 		MITH_Player player5 = new MITH_Player("Loser", "generic-male.png", "random");
 	
-		if(game.addPlayer(player1)){
-			System.out.println(player1.getName() + " added to the game.");
-		}
-		else {
-			System.out.println(player1.getName() + " can't play.");
-		}
-		
-		if(game.addPlayer(player2)){
-			System.out.println(player2.getName() + " added to the game.");
-		}
-		else {
-			System.out.println(player2.getName() + " can't play.");
-		}
-		
-		if(game.addPlayer(player1)){
-			System.out.println(player1.getName() + " added to the game.");
-		}
-		else {
-			System.out.println(player1.getName() + " can't play.");
-		}
+//		if(game.addPlayer(player1)){
+//			System.out.println(player1.getName() + " added to the game.");
+//		}
+//		else {
+//			System.out.println(player1.getName() + " can't play.");
+//		}
+//		
+//		if(game.addPlayer(player2)){
+//			System.out.println(player2.getName() + " added to the game.");
+//		}
+//		else {
+//			System.out.println(player2.getName() + " can't play.");
+//		}
+//		
+//		if(game.addPlayer(player1)){
+//			System.out.println(player1.getName() + " added to the game.");
+//		}
+//		else {
+//			System.out.println(player1.getName() + " can't play.");
+//		}
 				
 //		if(game.addPlayer(player3)){
 //			System.out.println(player3.getName() + " added to the game.");
@@ -229,14 +239,18 @@ public class MITH_Game {
 //		System.out.println("\n");
 //		game.dealCards();
 		
-		
-		player1.getHand().sampleHand(1);
+		/*
+		player1.getHand().sampleHand(1); //Artificially add cards to player's hand.
 		player2.getHand().sampleHand(2);
 		
 		
-		player1.getHouse().sampleHouse(1);
+		player1.getHouse().sampleHouse(1); //Artificially add cards to player's house.
 		player2.getHouse().sampleHouse(2);
-		
+		**/
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+        game.dealCards();  
+        
 		// verify that it worked
 		System.out.println(game.stateOfGame());
 		
@@ -249,6 +263,8 @@ public class MITH_Game {
 	public static void main(String[] args)
 	{
 		MITH_Game.test2PlayerNR();
+        
+        
 	}// end main
 	
 	

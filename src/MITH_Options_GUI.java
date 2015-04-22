@@ -1,3 +1,13 @@
+/*******************************************************************
+ * Moose In The House - CS205 Final Project
+ * Ian Benson, Jonathan Carter, Joey Palchak, Rachel Temple Cj Zhang
+ *
+ * MITH_Options_GUI - GUI class for creating a window, presenting
+ *                    various game options for the user
+ *******************************************************************/
+
+import java.util.*;
+
 import javax.swing.*;
 import java.awt.Color;
 
@@ -22,7 +32,10 @@ public class MITH_Options_GUI extends JFrame
             
 
 
-   // constructor
+   /*********************************************************
+	 MITH_Options_GUI() - default constructor, creates a 
+     window presenting various game options to the player
+   *********************************************************/
    public MITH_Options_GUI()
    {
      
@@ -42,7 +55,10 @@ public class MITH_Options_GUI extends JFrame
       setVisible(true);
    }
       
-
+/*********************************************************
+ buildPanel() - creates and adds the various buttons & 
+ content to the content panel
+*********************************************************/
 private void buildPanel()
    {
       helpButton = new JButton("Help");

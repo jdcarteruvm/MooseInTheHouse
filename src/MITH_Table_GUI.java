@@ -1,3 +1,14 @@
+/*******************************************************************
+ * Moose In The House - CS205 Final Project
+ * Ian Benson, Jonathan Carter, Joey Palchak, Rachel Temple Cj Zhang
+ *
+ * MITH_Table_GUI - primary GUI class, which creates the game's 
+ *                  window and allows the user to play the game by
+ *                  interacting with its interface.
+ * This class will communicate with the MITH_Game class to run the
+ * actual game.        
+ *******************************************************************/
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -309,6 +320,7 @@ public class MITH_Table_GUI extends JFrame
          if(e.getSource() == howToPlayButton)
          {  
             MITH_HowToPlay_GUI howToPlayWindow = new MITH_HowToPlay_GUI();
+            howToPlayWindow.createFrame();
          }
          if(e.getSource() == helpButton)
          {

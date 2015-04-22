@@ -45,6 +45,27 @@ public class MITH_Hand{
     }//End addCard
     
     /*************************************************
+     * getCard() gets the card specified by the list *
+     * index, and REMOVES it from the hand.          *
+     *************************************************/
+    public MITH_Card getCard(int i){
+        card = hand.get(i);
+        hand.remove(i);
+        return card;
+    }
+    
+    /*************************************************
+     * get() merely get's the card specified         *
+     * by the list index.                            *
+     *************************************************/
+    public MITH_Card check(int i){
+        if (i < hand.size())
+            return hand.get(i);
+        else
+            return null;
+    }
+    
+    /*************************************************
      * removeCard() removes a card of a certain      *
      * type and/or room type.                        *
      *************************************************/
@@ -200,6 +221,7 @@ public class MITH_Hand{
         if (test_hand.getSize() == 0){
          test_hand.addCard(test_card);
          System.out.println(test_hand.getSize());
+
          message += "Passed.";
         }    
         else{
@@ -207,19 +229,10 @@ public class MITH_Hand{
          System.out.println(message);
         } 
 
-//       if (test_hand.getSize() == i){
-//        test_hand.remove(i);
-//        System.out.println(test_hand.getSize());
-//        message += "Passed.";
-//        } 
-//        else 
-//            message += "Failed.";
-            
-        //Testing isEmpty()
         if (test_hand.isEmpty()== true){
          message += "Passed";
         } else{
             message+= "Failed";
         }
-    } //End Test       
+    } //End Test      
 }//End Class
