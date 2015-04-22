@@ -31,10 +31,10 @@ import javax.swing.JFrame;
 public class MITH_Table_GUI extends JFrame 
 {
    private JPanel table;
-   final int WINDOW_WIDTH = 870;
+   final int WINDOW_WIDTH = 868;
    final int WINDOW_HEIGHT= 620;
    
-   final int MENU_WIDTH = 200; 
+   final int MENU_WIDTH = 202; 
    final int MENU_HEIGHT= 300;
    
    
@@ -87,11 +87,32 @@ public class MITH_Table_GUI extends JFrame
       
       //leftPanel.add(playArea);
       //leftPanel.add(handArea);
-      leftPanel.add(new GameBoardTest(4));
+       
+      //ADD THE GAME
+        MITH_Game game = new MITH_Game();
+		MITH_Game_Board board = new MITH_Game_Board(4);
+		
+		
+		MITH_Player player1 = new MITH_Player("Jon", "jcarter.png", "jcarter");
+		MITH_Player player2 = new MITH_Player("Comp", "generic-female.png", "random");
+		MITH_Player player3 = new MITH_Player("Batman", "batman.png", "batman");
+		MITH_Player player4 = new MITH_Player("Loser", "generic-male.png", "random");
+		
+		board.setGame(game);
+		game.setGUI(board);
+		
+		board.setPlayer(player1);
+		
+    game.addPlayer(player1);
+    game.addPlayer(player2);
+    game.addPlayer(player3);
+    game.addPlayer(player4);
+       
+      leftPanel.add(board);
       rightPanel.add(menuPanel);
       
+       
       table.add(leftPanel);
-     
       table.add(rightPanel);
       //table.add(menuPanel);
        
@@ -164,7 +185,7 @@ public class MITH_Table_GUI extends JFrame
       
       //howToPlayButton.setIcon("woods2");
       
-      optionsButton = new JButton("Options");
+      optionsButton = new JButton("Statistics");
       //optionsButton.setBackground(Color.BLACK);
       //optionsButton.setOpaque(true);
       //optionsButton.setBorderPainted(false);
@@ -194,7 +215,8 @@ public class MITH_Table_GUI extends JFrame
      
       
       Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
-      Border menuBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5), loweredBevel);
+      //Border menuBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5), loweredBevel);
+      Border menuBorder = BorderFactory.createEmptyBorder(10, 5, 10, 5);
       
        
       menuPanel.add(mooseLabel); 
@@ -204,7 +226,7 @@ public class MITH_Table_GUI extends JFrame
       menuPanel.add(optionsButton);
       menuPanel.add(quitButton);
       menuPanel.setLayout(new GridLayout(15,1)); // GRID LAYOUT
-      menuPanel.setBackground(new Color(70,200,20)); // MENU BACKGROUND COLOR
+      menuPanel.setBackground(new Color(0,128,0)); // MENU BACKGROUND COLOR
       menuPanel.setBorder(menuBorder);
       //menuPanel.setPreferredSize(new Dimension(35, 300));
     
@@ -314,7 +336,7 @@ public class MITH_Table_GUI extends JFrame
       {
          if(e.getSource() == optionsButton)
          {
-            MITH_Options_GUI optionsWindow = new MITH_Options_GUI();
+            GameStats_GUI satsWindow = new GameStats_GUI();
          }      
          if(e.getSource() == howToPlayButton)
          {  

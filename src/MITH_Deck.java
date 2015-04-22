@@ -2,6 +2,7 @@
  * CS 205 - Software Engineering *
  * Moose in the House            *
  * MITH_Deck       -     v0.1    *
+ * Authors: Joey
  *********************************/
 
 /** ################################################### **
