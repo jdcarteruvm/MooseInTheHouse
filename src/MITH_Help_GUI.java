@@ -1,3 +1,11 @@
+/*******************************************************************
+ * Moose In The House - CS205 Final Project
+ * Ian Benson, Jonathan Carter, Joey Palchak, Rachel Temple Cj Zhang
+ *
+ * MITH_Help_GUI - GUI class for creating a window, presenting
+ *                 guidelines on how to use the program interface
+ *******************************************************************/
+
 import javax.swing.*;
 import java.awt.Color;
 
