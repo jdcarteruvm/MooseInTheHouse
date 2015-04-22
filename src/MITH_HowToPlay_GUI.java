@@ -1,3 +1,12 @@
+/*******************************************************************
+ * Moose In The House - CS205 Final Project
+ * Ian Benson, Jonathan Carter, Joey Palchak, Rachel Temple Cj Zhang
+ *
+ * MITH_HowToPlay_GUI - GUI class for creating a window, presenting
+ *                      the game's rules & guidelines for playing
+ *******************************************************************/
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
