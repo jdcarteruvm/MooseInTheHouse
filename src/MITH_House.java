@@ -4,6 +4,7 @@
  *
  * MITH_House- A class implementing each player's house cards for the
  *             table of play
+ * Authors: Jon
  *******************************************************************/
 
 

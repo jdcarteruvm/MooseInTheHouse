@@ -2,6 +2,7 @@
  * CS 205 - Software Engineering *
  * Moose in the House            *
  * MITH_Hand       -     v0.1    *
+ * Authors: Joey, Jon            *
  *********************************/
 
 /** ####################################################### **
