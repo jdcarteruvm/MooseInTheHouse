@@ -64,9 +64,9 @@ public class MITH_Options_GUI extends JFrame
 *********************************************************/
 private void buildPanel()
    {
-      helpButton = new JButton("Help");
+      helpButton = new JButton("How to Play");
       helpButton.addActionListener(new ButtonListener());
-      howToPlayButton = new JButton("How To Play");
+      howToPlayButton = new JButton("Rules of Play");
       howToPlayButton.addActionListener(new ButtonListener());
       statsButton = new JButton("Statistics");
       statsButton.addActionListener(new ButtonListener());
