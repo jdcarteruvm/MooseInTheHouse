@@ -150,7 +150,7 @@ class MITH_Player {
 	 their hand
 	 **********((*********************************************/
 	public void giveCard(MITH_Card card) {
-		if(my_hand.getSize() < MITH_Game.MAXCARDSINHAND)
+		if(my_hand.getSize() < MITH_Game.MAXCARDSINHAND + 1)
 		{
 			if(card != null) {
 				my_hand.addCard(card);
@@ -158,6 +158,12 @@ class MITH_Player {
 		}
 	} // end giveCard
 	
+	/*********************************************************
+	 removeCard() - takes a player's card away from them
+	 *********************************************************/
+	public void removeCard(MITH_Card card) {
+		my_hand.removeCard(card);
+	}
     /*********************************************************
 	 addToHouse() - adds the card to player's house
 	 **********((*********************************************/
