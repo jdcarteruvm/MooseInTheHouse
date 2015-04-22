@@ -67,10 +67,10 @@ public class GameBoardTest extends JLayeredPane {
 
 		static final int MAX_PLAYERS = 4;
 		static final int MAX_LG_ROOMS = 5; // the most of the larger cards that will fit on one row
-		static final String IM_PATH = "..\\resources\\images\\30dpi\\";
-		static final String SM_IM_PATH = "..\\resources\\images\\15dpi\\";
+		static final String IM_PATH = "../resources/images/30dpi/";
+		static final String SM_IM_PATH = "../resources/images/15dpi/";
 		
-		static final String PIC_PATH = "..\\resources\\images\\players\\";
+		static final String PIC_PATH = "../resources/images/players/";
 				
 		static final int CARD_WIDTH = 75;
 		static final int CARD_HEIGHT = 110;
@@ -96,7 +96,7 @@ public class GameBoardTest extends JLayeredPane {
 		
     public GameBoardTest(int num_players) {
 				
-				backgroundImg = new ImageIcon("..\\resources\\images\\playareabackground.png").getImage();
+				backgroundImg = new ImageIcon("../resources/images/playareabackground.png").getImage();
 //				int num_players = 4;
 				deck = new MITH_Deck();
 				deck.shuffle();
