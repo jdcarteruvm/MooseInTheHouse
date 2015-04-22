@@ -31,11 +31,11 @@ import javax.swing.JFrame;
 public class MITH_Table_GUI extends JFrame 
 {
    private JPanel table;
-   final int WINDOW_WIDTH = 1100;
-   final int WINDOW_HEIGHT =600;
+   final int WINDOW_WIDTH = 870;
+   final int WINDOW_HEIGHT= 620;
    
-   final int MENU_WIDTH = 120; 
-   final int MENU_HEIGHT =3000;
+   final int MENU_WIDTH = 200; 
+   final int MENU_HEIGHT= 300;
    
    
    
@@ -58,8 +58,8 @@ public class MITH_Table_GUI extends JFrame
    public MITH_Table_GUI()
    {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      Font myFont = new Font("Serif", Font.BOLD, 12);
-      Font newFont = myFont.deriveFont(25F);
+      Font myFont = new Font("Georgia", Font.BOLD, 8);
+      Font newFont = myFont.deriveFont(15F);
    
    
    
@@ -85,8 +85,9 @@ public class MITH_Table_GUI extends JFrame
       
  
       
-      leftPanel.add(playArea);
-      leftPanel.add(handArea);
+      //leftPanel.add(playArea);
+      //leftPanel.add(handArea);
+      leftPanel.add(new GameBoardTest(4));
       rightPanel.add(menuPanel);
       
       table.add(leftPanel);
@@ -103,23 +104,23 @@ public class MITH_Table_GUI extends JFrame
       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
            
       
-      getContentPane().setBackground(Color.RED);
+      //getContentPane().setBackground(Color.RED);
       
-      leftPanel.setPreferredSize(new Dimension(500,400));
+      leftPanel.setPreferredSize(new Dimension(900,600));
       //leftPanel.setOpaque(true);
-      leftPanel.setBackground(Color.BLACK);
+      leftPanel.setBackground(Color.GREEN);
       
-      rightPanel.setPreferredSize(new Dimension(100,300));
+      rightPanel.setPreferredSize(new Dimension(170,300));
       //leftPanel.setOpaque(true);
-      rightPanel.setBackground(Color.BLACK);
+      rightPanel.setBackground(Color.GREEN);
       
-//       JLabel mooseLabel = new JLabel();
-//       mooseLogo = new ImageIcon("../resources/images/MITH_Logo_150px.png");
-//       mooseLabel.setIcon(mooseLogo);
-//       menuPanel.add(mooseLabel); 
+       //MOOSE LOGO
+       JLabel mooseLabel = new JLabel();
+       mooseLogo = new ImageIcon("../resources/images/MITH_Logo_150px.png");
+       mooseLabel.setIcon(mooseLogo);
+       
       menuPanel.setSize(MENU_WIDTH, MENU_HEIGHT);
-      menuPanel.setBackground(Color.BLACK);
-      
+      menuPanel.setBackground(Color.GREEN);      
    
       
       // creates button, add images
@@ -128,13 +129,13 @@ public class MITH_Table_GUI extends JFrame
 //       woods1 = new ImageIcon("../resources/images/woods1.jpeg");
 //       buttonLabel.setIcon(woods1);
          helpButton = new JButton("Help");
-         helpButton.setContentAreaFilled(true);
-         helpButton.setFocusPainted(true);
-         helpButton.setBackground(Color.BLACK);
-         helpButton.setOpaque(true);
-         helpButton.setBorderPainted(false);
+         //helpButton.setContentAreaFilled(true);
+         //helpButton.setFocusPainted(true);
+         //helpButton.setBackground(Color.BLACK);
+         //helpButton.setOpaque(true);
+         //helpButton.setBorderPainted(false);
          try {
-           helpButton.setIcon(new ImageIcon("../resources/images/woods3.jpeg"));
+           //helpButton.setIcon(new ImageIcon("../resources/images/woods3.jpeg"));
            helpButton.setHorizontalTextPosition(SwingConstants.CENTER);
          } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -142,19 +143,19 @@ public class MITH_Table_GUI extends JFrame
 
 
  //        JPanel buttonPanel = new JPanel();
-    //     buttonPanel.setSize(150,400);
+//     buttonPanel.setSize(150,400);
 //       
        
      
       
-      howToPlayButton = new JButton("How To Play");
+      howToPlayButton = new JButton("Rules");
       //howToPlayButton.setPreferredSize(new Dimension(30, 80));
       //howToPlayButton.setBackground(new Color(25,150,50));
-      howToPlayButton.setBackground(Color.BLACK);
-      howToPlayButton.setOpaque(true);
-      howToPlayButton.setBorderPainted(false);
+      //howToPlayButton.setBackground(Color.BLACK);
+      //howToPlayButton.setOpaque(true);
+      //howToPlayButton.setBorderPainted(false);
       try {
-           howToPlayButton.setIcon(new ImageIcon("../resources/images/woods5.jpeg"));
+           //howToPlayButton.setIcon(new ImageIcon("../resources/images/woods5.jpeg"));
            howToPlayButton.setHorizontalTextPosition(SwingConstants.CENTER);
          } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -164,12 +165,12 @@ public class MITH_Table_GUI extends JFrame
       //howToPlayButton.setIcon("woods2");
       
       optionsButton = new JButton("Options");
-      optionsButton.setBackground(Color.BLACK);
-      optionsButton.setOpaque(true);
-      optionsButton.setBorderPainted(false);
+      //optionsButton.setBackground(Color.BLACK);
+      //optionsButton.setOpaque(true);
+      //optionsButton.setBorderPainted(false);
          try {
 //           Image img = ImageIO.read(getClass().getResource("../resources/images/woods3.jpeg"));
-           optionsButton.setIcon(new ImageIcon("../resources/images/woods4.jpeg"));
+           //optionsButton.setIcon(new ImageIcon("../resources/images/woods4.jpeg"));
            optionsButton.setHorizontalTextPosition(SwingConstants.CENTER);
          } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -180,11 +181,11 @@ public class MITH_Table_GUI extends JFrame
       //button.setIcon("woods3");
       
       quitButton = new JButton("Quit");
-      quitButton.setBackground(Color.BLACK);
-      quitButton.setOpaque(true);
-      quitButton.setBorderPainted(false);
+      //quitButton.setBackground(Color.BLACK);
+      //quitButton.setOpaque(true);
+      //quitButton.setBorderPainted(false);
          try {
-              quitButton.setIcon(new ImageIcon("../resources/images/woods1.jpeg"));
+              //quitButton.setIcon(new ImageIcon("../resources/images/woods1.jpeg"));
               quitButton.setHorizontalTextPosition(SwingConstants.CENTER);
             } catch (Exception ex) {
                System.out.println(ex.getMessage());
@@ -193,55 +194,53 @@ public class MITH_Table_GUI extends JFrame
      
       
       Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
-      Border menuBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10), loweredBevel);
+      Border menuBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5), loweredBevel);
       
+       
+      menuPanel.add(mooseLabel); 
+      menuPanel.add(new JPanel()).setVisible(false);
       menuPanel.add(helpButton);
       menuPanel.add(howToPlayButton);
       menuPanel.add(optionsButton);
       menuPanel.add(quitButton);
-      //menuPanel.setLayout(new GridLayout(3,1));
-      menuPanel.setBackground(new Color(1,1,1));
+      menuPanel.setLayout(new GridLayout(15,1)); // GRID LAYOUT
+      menuPanel.setBackground(new Color(70,200,20)); // MENU BACKGROUND COLOR
       menuPanel.setBorder(menuBorder);
-      menuPanel.setPreferredSize(new Dimension(120, 45));
-      
-
-      
-      
-      
-      Border loweredBevel2 = BorderFactory.createLoweredSoftBevelBorder();
-      Border playBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10), loweredBevel2);
-      playArea.setBorder(playBorder);
-      playArea.setPreferredSize(new Dimension(1200, 450));
-      playArea.setBackground(new Color(50,150, 50));
-      
-      
-      
+      //menuPanel.setPreferredSize(new Dimension(35, 300));
+    
       
       optionsButton.addActionListener(new ButtonListener());
-      optionsButton.setForeground(Color.WHITE);
+      //optionsButton.setForeground(Color.WHITE);
       optionsButton.setFont(newFont);
       optionsButton.setVisible(true);
       
       
       helpButton.addActionListener(new ButtonListener());
-      helpButton.setForeground(Color.WHITE);
+      //helpButton.setForeground(Color.WHITE);
       helpButton.setFont(newFont);
       helpButton.setVisible(true);
       
       
       howToPlayButton.addActionListener(new ButtonListener());     
       howToPlayButton.setFont(newFont);
-      howToPlayButton.setForeground(Color.WHITE);
+      //howToPlayButton.setForeground(Color.WHITE);
       howToPlayButton.setVisible(true);
       
       
    
       quitButton.addActionListener(new ButtonListener());
-      quitButton.setBackground(Color.BLACK);
-      quitButton.setForeground(Color.WHITE);
+      //quitButton.setBackground(Color.BLACK);
+      //quitButton.setForeground(Color.WHITE);
       quitButton.setFont(newFont);
       quitButton.setVisible(true);
       
+      //PLAY AREA
+      //*******************************************************
+      Border loweredBevel2 = BorderFactory.createLoweredSoftBevelBorder();
+      Border playBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10), loweredBevel2);
+      playArea.setBorder(playBorder);
+      playArea.setPreferredSize(new Dimension(1200, 450));
+      //playArea.setBackground(new Color(50,150, 50));
       
       JLabel label2 = new JLabel("Play Area");
       playArea.add(label2);
@@ -250,8 +249,8 @@ public class MITH_Table_GUI extends JFrame
       playArea.setBorder(playBorder);
       playArea.setPreferredSize(new Dimension(1200, 450));
       playArea.setBackground(new Color(50,150, 50));
-      playArea.setBackground(Color.BLACK);
-      label2.setForeground(Color.WHITE);
+      //playArea.setBackground(Color.BLACK);
+      //label2.setForeground(Color.WHITE);
       
       
       
@@ -262,7 +261,7 @@ public class MITH_Table_GUI extends JFrame
       label3.setForeground(Color.WHITE);
       handArea.setPreferredSize(new Dimension(1200, 150));
       handArea.setBackground(new Color(50,150,50));
-      handArea.setBackground(Color.BLACK);
+      //handArea.setBackground(Color.BLACK);
       add(table);
       setVisible(true);  
       
@@ -320,7 +319,6 @@ public class MITH_Table_GUI extends JFrame
          if(e.getSource() == howToPlayButton)
          {  
             MITH_HowToPlay_GUI howToPlayWindow = new MITH_HowToPlay_GUI();
-            howToPlayWindow.createFrame();
          }
          if(e.getSource() == helpButton)
          {
@@ -344,24 +342,3 @@ public static void main(String[] args)
    MITH_Table_GUI gameGui = new MITH_Table_GUI();
 }  
 }
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

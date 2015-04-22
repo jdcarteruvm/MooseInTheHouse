@@ -7,9 +7,19 @@
  *******************************************************************/
 
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
 
-
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.io.IOException;
+import javax.swing.border.Border;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import java.awt.image.BufferedImage;
 
 public class MITH_Help_GUI extends JFrame
 {
@@ -27,46 +37,57 @@ public class MITH_Help_GUI extends JFrame
    private JLabel helpLabel;
 
      
-            
-
-
-   // constructor
-   public MITH_Help_GUI()
+    public MITH_Help_GUI(){
+        createFrame();
+    }
+    
+    public static void createFrame() 
    {
-     
-           
-              
-            //Set the window's title
-      
-      setTitle("HELP");
-      setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-      //JLabel helpLabel = new JLabel("I am useless and can not help. Sorry");
-      //panel.add(helpLabel);
+   JEditorPane editorPane = new JEditorPane();
+   editorPane.setEditable(false);
+
+   java.net.URL helpURL = MITH_Help_GUI.class.getResource("HowToPlay.html");
+
+   if (helpURL != null) {
+        try {
+            editorPane.setPage(helpURL);
+        } catch (IOException e) {
+            System.err.println("Attempted to read a bad URL: " + helpURL);
+        }
+    } else {
+        System.err.println("Couldn't find file: HowToPlay.html");
+    }
+
+    JScrollPane editorScrollPane = new JScrollPane(editorPane);
+
+    editorScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    editorScrollPane.setPreferredSize(new Dimension(600, 900));
+    editorScrollPane.setMinimumSize(new Dimension(10, 10));
+
   
-            
-      buildPanel();
-      add(panel);
-      
-      
-      setVisible(true);
-   }
-      
+    JFrame f = new JFrame();
 
-private void buildPanel()
-   {
+    f.setTitle("A Helping Hand");
+    f.setSize(800, 700);
+    f.setLocationRelativeTo(null);
 
-      panel = new JPanel();
-      
+    f.getContentPane().add(editorScrollPane, BorderLayout.NORTH);
+    Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
+    //Border howToPlayBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20),loweredBevel);
+    Border howToPlayBorder = BorderFactory.createEmptyBorder(20,20,20,20);
+    f.setBackground(Color.BLACK);
+    //f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //menuPanel.setBorder(menuBorder);
+    editorPane.setBorder(howToPlayBorder);
   
-      
-      
-   }   
-   
-   
-   
-public static void main (String[]args)
-   {
-      
-      MITH_Help_GUI tableForView = new MITH_Help_GUI();
-   }
+    f.setResizable(true);
+    f.setVisible(true);
+}
+
+public static void main(String[] args) 
+{
+     MITH_Help_GUI window = new MITH_Help_GUI();
+    
+    
+}
 }

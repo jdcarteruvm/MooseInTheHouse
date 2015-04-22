@@ -10,6 +10,8 @@ import java.util.*;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
 
 
 
@@ -18,7 +20,7 @@ public class MITH_Options_GUI extends JFrame
    private JPanel panel;
    private JButton helpButton;
    private JButton howToPlayButton; 
-   private JButton optionsButton;
+   private JButton statsButton;
    private JButton quitButton;  
    final int WINDOW_WIDTH = 200;
    final int WINDOW_HEIGHT = 700;
@@ -45,6 +47,7 @@ public class MITH_Options_GUI extends JFrame
       
       setTitle("MENU");
       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
           
   
             
@@ -61,21 +64,47 @@ public class MITH_Options_GUI extends JFrame
 *********************************************************/
 private void buildPanel()
    {
-      helpButton = new JButton("Help");
-      howToPlayButton = new JButton("How To Play");
-      optionsButton = new JButton("Options");
+      helpButton = new JButton("How to Play");
+      helpButton.addActionListener(new ButtonListener());
+      howToPlayButton = new JButton("Rules of Play");
+      howToPlayButton.addActionListener(new ButtonListener());
+      statsButton = new JButton("Statistics");
+      statsButton.addActionListener(new ButtonListener());
       quitButton = new JButton("Quit");
+      quitButton.addActionListener(new ButtonListener());
       panel = new JPanel();
       
       panel.add(helpButton);
       panel.add(howToPlayButton);
       panel.add(quitButton);
-      panel.add(optionsButton);
+      panel.add(statsButton);
       
       
    }   
    
-   
+private class ButtonListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         if(e.getSource() == statsButton)
+         {
+            GameStats_GUI statWindow = new GameStats_GUI();
+         }
+         if(e.getSource() == helpButton)
+         {
+            MITH_Help_GUI helpWindow = new MITH_Help_GUI();
+         }
+         if(e.getSource() == howToPlayButton)
+         {
+             MITH_HowToPlay_GUI howWindow = new MITH_HowToPlay_GUI();
+         }
+         if(e.getSource() == quitButton)
+         {
+            System.exit(0);
+         }
+         
+      }
+   }  
    
 public static void main (String[]args)
    {
