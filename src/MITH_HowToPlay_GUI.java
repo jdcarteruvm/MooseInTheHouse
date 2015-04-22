@@ -60,7 +60,7 @@ public class MITH_HowToPlay_GUI extends JFrame
     Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
     Border howToPlayBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20), loweredBevel);
     f.setBackground(Color.BLACK);
-    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //menuPanel.setBorder(menuBorder);
     editorPane.setBorder(howToPlayBorder);
   
