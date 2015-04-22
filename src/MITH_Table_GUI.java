@@ -88,8 +88,27 @@ public class MITH_Table_GUI extends JFrame
       //leftPanel.add(playArea);
       //leftPanel.add(handArea);
        
-      //ADD THE GAME GUI
-      leftPanel.add(new MITH_Game_Board(4));
+      //ADD THE GAME
+        MITH_Game game = new MITH_Game();
+		MITH_Game_Board board = new MITH_Game_Board(4);
+		
+		
+		MITH_Player player1 = new MITH_Player("Jon", "jcarter.png", "jcarter");
+		MITH_Player player2 = new MITH_Player("Comp", "generic-female.png", "random");
+		MITH_Player player3 = new MITH_Player("Batman", "batman.png", "batman");
+		MITH_Player player4 = new MITH_Player("Loser", "generic-male.png", "random");
+		
+		board.setGame(game);
+		game.setGUI(board);
+		
+		board.setPlayer(player1);
+		
+    game.addPlayer(player1);
+    game.addPlayer(player2);
+    game.addPlayer(player3);
+    game.addPlayer(player4);
+       
+      leftPanel.add(board);
       rightPanel.add(menuPanel);
       
        
@@ -166,7 +185,7 @@ public class MITH_Table_GUI extends JFrame
       
       //howToPlayButton.setIcon("woods2");
       
-      optionsButton = new JButton("Options");
+      optionsButton = new JButton("Statistics");
       //optionsButton.setBackground(Color.BLACK);
       //optionsButton.setOpaque(true);
       //optionsButton.setBorderPainted(false);
@@ -317,7 +336,7 @@ public class MITH_Table_GUI extends JFrame
       {
          if(e.getSource() == optionsButton)
          {
-            MITH_Options_GUI optionsWindow = new MITH_Options_GUI();
+            GameStats_GUI satsWindow = new GameStats_GUI();
          }      
          if(e.getSource() == howToPlayButton)
          {  
