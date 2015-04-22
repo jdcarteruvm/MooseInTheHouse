@@ -80,7 +80,23 @@ public class MITH_House {
     return false;
     
   }
-    
+
+   /********************************************************* 
+   numMoose() - counts the number of moose cards in the hand
+   *********************************************************/ 
+  public int numMoose() {
+  	int ct = 0;
+  	
+   	for(int i = 0; i < rooms.size(); i++)
+   	{
+   		MITH_Card card = rooms.get(i).top_card;
+   		if(card.getType() == MITH_Card.ROOMMOOSE) {
+   			ct++;
+   		}
+   	}
+   	
+   	return ct;
+  } 
     
   /*******************************************************
    * toString - makes a human readable string out of the *

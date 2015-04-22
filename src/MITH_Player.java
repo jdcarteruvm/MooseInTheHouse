@@ -153,6 +153,12 @@ class MITH_Player {
 		}
 	} // end giveCard
 	
+    /*********************************************************
+	 addToHouse() - adds the card to player's house
+	 **********((*********************************************/
+    public void addToHouse(MITH_Card card){
+        my_house.addCard(card);
+    }
 	
 	/*********************************************************
 	 handToString() - utility function to export toString 
