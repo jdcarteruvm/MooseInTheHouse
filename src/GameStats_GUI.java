@@ -49,7 +49,7 @@ import java.io.FileNotFoundException;
          
          //Initial window attributes
          setTitle("Statistics");
-         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          
          //Content Pane
          content = new JPanel();
