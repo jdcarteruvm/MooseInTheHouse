@@ -52,13 +52,14 @@ public class MITH_HowToPlay_GUI extends JFrame
   
     JFrame f = new JFrame();
 
-    f.setTitle("How To Play MOOSE IN THE HOUSE");
+    f.setTitle("How To Play");
     f.setSize(910, 850);
     f.setLocationRelativeTo(null);
 
     f.getContentPane().add(editorScrollPane, BorderLayout.NORTH);
     Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
-    Border howToPlayBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20), loweredBevel);
+    //Border howToPlayBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20),loweredBevel);
+    Border howToPlayBorder = BorderFactory.createEmptyBorder(20,20,20,20);
     f.setBackground(Color.BLACK);
     //f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //menuPanel.setBorder(menuBorder);
