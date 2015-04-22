@@ -297,18 +297,54 @@ public class MITH_Game_Board extends JLayeredPane {
         move.player = player;
     } 
 		
+		/*******************************************************
+		 override paintComponent so we have a backgound
+		 *******************************************************/
 		public void paintComponent(Graphics g) {
 	   	g.drawImage(backgroundImg, 0, 0, null);
   	}
 		
+		
+		/*********************************************
+		 setGame - registers the game that this gui
+		 is running with
+		 *********************************************/
 		public void setGame(MITH_Game g) {
 			game = g;
 		}
 		
-		
+		/****************************************
+		 register player with the gui
+		 ****************************************/
 		public void setPlayer(MITH_Player p) {
 			player = p;
 		}
+
+		/****************************************
+		 validateHand - updates the state of the
+		 hand
+		 ****************************************/
+		public void validateHand() {
+			handPanel.cards = new ArrayList<MITH_Label>();
+    	// remove all the cards from the current panel
+    	Component[] oldCards = handPanel.getComponents();
+    	for(int i = 0; i < oldCards.length; i++) {
+    		handPanel.remove(oldCards[i]);
+    	}
+    	
+			for(int i = 0; i < player.getHand().getSize(); i++)
+			{
+				MITH_Label card = new MITH_Label();
+				card.card = player.getHand().check(i);
+				card.setIcon(new ImageIcon(IM_PATH + card.card.getImage()));
+//				System.out.println("Adding " + card.card);
+				handPanel.cards.add(card);
+				handPanel.add(card);
+			}
+			
+    	handPanel.revalidate();			
+		}
+		
     private class MyMouseAdapter extends MouseAdapter {
         private MITH_Label dragLabel = null;
         private boolean drawDragLabel = false;
@@ -452,6 +488,13 @@ public class MITH_Game_Board extends JLayeredPane {
 
             if(droppedPanel instanceof MITH_Player_Panel) {
             	playerPanel = (MITH_Player_Panel) droppedPanel; //
+            	if(playerPanel.id == 1)
+            	{
+            		addToHand();
+            		remove(dragLabel);
+             		repaint();
+             		return;
+            	}
 //							System.out.println("[" + playerPanel.getX() + ", " + playerPanel.getY() + "]");
             	target = (JPanel) playerPanel.getComponentAt((int)(me.getPoint().getX() - playerPanel.getX()), (int)(me.getPoint().getY() - playerPanel.getY()));
             	
@@ -665,7 +708,7 @@ public class MITH_Game_Board extends JLayeredPane {
     				switch(move.card.getType()) {
     					case MITH_Card.DOOR: validMove = game.playDoor(move); break;
     					case MITH_Card.MITH: validMove = game.playMITH(move); break;
-    					case MITH_Card.ROOMEMPTY: validMove = game.playRoomEmpty(move); break;
+//    					case MITH_Card.ROOMEMPTY: validMove = game.playRoomEmpty(move); break;
     					case MITH_Card.ROOMMOOSE: validMove = game.playRoomMoose(move); break;
     					case MITH_Card.TRAP: validMove = game.playTrap(move); break;
     				}

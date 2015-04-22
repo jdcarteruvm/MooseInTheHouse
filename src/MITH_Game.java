@@ -187,10 +187,19 @@ public class MITH_Game {
 	 players.size() * MAXCARDSINHAND cards in it
 	 *********************************************************/
 	public void dealCards() {
+		
 		for(int i = 0; i < MAXCARDSINHAND; i++)	{
 			for(int j = 0; j < players.size(); j++)	{
 				players.get(j).giveCard(drawFromDeck());
 			}
+			try {
+        Thread.sleep(300);
+
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();			
+      }
+      GUI.validateHand();
+
 		}
 	} // end dealCards
 	
