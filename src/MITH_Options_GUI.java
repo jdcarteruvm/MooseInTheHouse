@@ -47,6 +47,7 @@ public class MITH_Options_GUI extends JFrame
       
       setTitle("MENU");
       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
           
   
             
@@ -64,10 +65,13 @@ public class MITH_Options_GUI extends JFrame
 private void buildPanel()
    {
       helpButton = new JButton("Help");
+      helpButton.addActionListener(new ButtonListener());
       howToPlayButton = new JButton("How To Play");
+      howToPlayButton.addActionListener(new ButtonListener());
       statsButton = new JButton("Statistics");
       statsButton.addActionListener(new ButtonListener());
       quitButton = new JButton("Quit");
+      quitButton.addActionListener(new ButtonListener());
       panel = new JPanel();
       
       panel.add(helpButton);
