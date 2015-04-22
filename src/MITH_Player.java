@@ -98,24 +98,28 @@ class MITH_Player {
 	/*********************************************************
 	 () - attempts to play a card from player's hand
 	 *********************************************************/
-//	public void playACard() {
+//	public MITH_Move playACard() {
 //		if	
 
 
 	/********************************************************* 
 	 playedMoose() - notifies the player that a moose was
-	 recently played on their house
-	 FCTVAL == true - I have a mooose trap and I just played 
+	 recently played on their house 
 	 *********************************************************/
-	public void playedMoose() {
+	public void playedMoose(MITH_Move move) {
 		
 		// there should be some sort of ai logic added to this
 		// to determine if the player wants to play a trap card
 		// or not
 		if(my_hand.hasCardType(MITH_Card.TRAP)) {
 			MITH_Card trapCard = my_hand.removeCard(MITH_Card.TRAP, MITH_Card.NON);
+			MITH_Move mymove = new MITH_Move();
+			mymove.player = this;
+			mymove.house = move.house;
+			mymove.roomslot = move.roomslot;
+			mymove.card = trapCard;
 			
-			if(game.playTrap(this, trapCard)) {
+			if(game.playTrap(move)) {
 				drawCard();
 			}
 			else {

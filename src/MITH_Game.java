@@ -42,23 +42,44 @@ public class MITH_Game {
 	 									 move and player has passed on a trap
 	 									 card
 	 **********************************************************/
-	public boolean playTrap(MITH_Player player, MITH_Card card) {
+	public boolean playTrap(MITH_Move move) {
 		System.out.println("Trap Played");
 		
 		if(lastmove == null) {
 			return false;
 		}
 		
-		if(card.getType() == MITH_Card.TRAP &&
-//			 lastmove.player != player &&
-			 lastmove.house == player.getHouse() &&
-			 lastmove.card.getType() == MITH_Card.ROOMMOOSE) {
+		if(move.card.getType() == MITH_Card.TRAP &&
+			 lastmove.player != move.player &&
+			 houses.get(move.house) == move.player.getHouse() &&
+			 move.card.getType() == MITH_Card.ROOMMOOSE) {
+			
+			move.player.getHand().removeCard(move.card);
+			houses.get(move.house).removeMoose(move.roomslot);
+			
+			clearLastMove();		 	
 			return true;
 		}
 		
 		return false;
 	} //end playTrap
 	
+	
+	/*********************************************************
+	 playMITH() - attempts to play a MITH card on a player's
+	 house
+	 *********************************************************/
+	public boolean playMITH(MITH_Move move) {
+		System.out.println("MITH Played");
+		
+		if(move.card.getType() == MITH_Card.MITH) {
+			if(houses.get(move.house).addCard(move.card)) {
+				clearLastMove();
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	/*********************************************************
 	 clearLastMove - clear the last move so trap cards can no
@@ -230,17 +251,6 @@ public class MITH_Game {
 		MITH_Game.test2PlayerNR();
 	}// end main
 	
-	/*********************************************************
-	 MITH_move - utility class to ease management of moves
-	 holds the move's player, card, house and location
-	 *********************************************************/
-	private class MITH_Move {
-		private MITH_Player player;
-		private MITH_Card card;
-		private MITH_House house;
-		private int slot;  // the slot in the house where this card is to be played (-1 for entry)
-		
-	}	
 	
 } // end MITH_Game class
 

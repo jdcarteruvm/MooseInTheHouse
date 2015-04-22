@@ -282,12 +282,13 @@ public class GameBoardTest extends JLayeredPane {
 				userPanel.add(discardPile);
 				backingPanel.add(userPanel);
         backingPanel.setOpaque(false);
+//				setBackground(new Color(128, 255, 29));
+				setOpaque(true);
         add(backingPanel, JLayeredPane.DEFAULT_LAYER);
         
         MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
         addMouseListener(myMouseAdapter);
         addMouseMotionListener(myMouseAdapter);
-
     } 
 		
 		public void paintComponent(Graphics g) {
@@ -338,6 +339,11 @@ public class GameBoardTest extends JLayeredPane {
 								}
 								
 	          	}
+          		else
+          		{
+          			drawDragLabel = false;
+          		}
+
           	}
           	else if(source == handPanel) {
           		System.out.println("handPanel clicked");
@@ -352,11 +358,18 @@ public class GameBoardTest extends JLayeredPane {
           			drawDragLabel = true;
           			removeFromHand(cardLabel);
           		}
+          		else
+          		{
+          			drawDragLabel = false;
+          		}
           		
           	}
           	else if(source == discardPile) {
           		System.out.println("discardPile clicked");
           		return;
+          	}
+          	else {
+          		drawDragLabel = false;
           	}
           	
           	if(drawDragLabel) {

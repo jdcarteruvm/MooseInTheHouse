@@ -24,7 +24,7 @@ public class MITH_House {
   }
   
   // add card attempts to add a card to the house in the first appropriate slot that is available
-  public Boolean addCard(MITH_Card card){
+  public boolean addCard(MITH_Card card){
     
     // if time allows this would probably be better replaced by switch statement
     // add a Moose in the House card to the player's house
@@ -80,7 +80,17 @@ public class MITH_House {
     return false;
     
   }
+  
+  
     
+  public boolean removeMoose(int i) {
+  	if(rooms.get(i).top_card.getType() == MITH_Card.ROOMMOOSE){
+  		rooms.get(i).top_card = null;
+  		return true;
+  	}
+  	
+  	return false;
+  }
     
   /*******************************************************
    * toString - makes a human readable string out of the *
