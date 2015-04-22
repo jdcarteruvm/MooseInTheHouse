@@ -309,6 +309,7 @@ public class MITH_Table_GUI extends JFrame
          if(e.getSource() == howToPlayButton)
          {  
             MITH_HowToPlay_GUI howToPlayWindow = new MITH_HowToPlay_GUI();
+            howToPlayWindow.createFrame();
          }
          if(e.getSource() == helpButton)
          {

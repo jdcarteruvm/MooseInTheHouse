@@ -1,125 +1,68 @@
-import java.net.URL;
-
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.io.IOException;
+import javax.swing.border.Border;
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import java.awt.image.BufferedImage;
 
-
-
-public class MITH_HowToPlay_GUI extends JFrame
+public class MITH_HowToPlay_GUI extends JFrame 
 {
-   private JPanel panel;
-   private JButton helpButton;
-   private JButton howToPlayButton; 
-   private JButton optionsButton;
-   private JButton quitButton;  
-   final int WINDOW_WIDTH = 200;
-   final int WINDOW_HEIGHT = 700;
-   
-   private JPanel imagePanel;     // To hold the label
-   private JPanel buttonPanel;    // To hold a button
-   private JLabel imageLabel;     // To show an image
-   private JButton button;        // To get an image
-
-   private JPanel  receiptPanel;
-            
 
 
-   // constructor
-   public MITH_HowToPlay_GUI()
+   public static void createFrame() 
    {
-     
-           
-              
-            //Set the window's title
-      
-      setTitle("How To Play");
-      setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-          
+   JEditorPane editorPane = new JEditorPane();
+   editorPane.setEditable(false);
+
+   java.net.URL helpURL = MITH_HowToPlay_GUI.class.getResource("GameRulesV1.1.html");
+
+   if (helpURL != null) {
+        try {
+            editorPane.setPage(helpURL);
+        } catch (IOException e) {
+            System.err.println("Attempted to read a bad URL: " + helpURL);
+        }
+    } else {
+        System.err.println("Couldn't find file: GameRulesV1.1.html");
+    }
+
+    JScrollPane editorScrollPane = new JScrollPane(editorPane);
+
+    editorScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    editorScrollPane.setPreferredSize(new Dimension(600, 900));
+    editorScrollPane.setMinimumSize(new Dimension(10, 10));
+
   
-            
-      buildPanel();
-      add(panel);
-      
-      
-      setVisible(true);
-   }
-      
+    JFrame f = new JFrame();
 
-private void buildPanel()
-   {
+    f.setTitle("How To Play MOOSE IN THE HOUSE");
+    f.setSize(910, 850);
+    f.setLocationRelativeTo(null);
 
-      quitButton = new JButton("Quit");
-      panel = new JPanel();
-      
-      panel.add(quitButton);
-      
-      
-      JEditorPane editor = new JEditorPane("../resources/src/gameRules.html","Empty Room cards" + 
-      "5 each of Kitchen, Bathroom, Living Room and Bedroom 20 Moose in the Room cards" + 
-      "(same as above, but with Moose) 10 There’s a Moose in the House cards; 5 Door cards;" +
-      "3 Moose Trap cards"); 
-      editor.setEditable(false);
-      JScrollPane pane = new JScrollPane(editor);
-      JFrame f = new JFrame("gameRules.html");
-      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      f.getContentPane().add(pane);
-      f.setSize(800, 600);
-      f.setVisible(true);
-   
-
-//       JFrame frame = new JFrame();
-//       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-// 
-//       JEditorPane editorPane = new JEditorPane();
-// 
-//       editorPane.setPage(new URL("http://www.java2s.com"));
-// 
-//       frame.add(new JScrollPane(editorPane));
-// 
-//       frame.setSize(300, 200);
-//       frame.setVisible(true);
-
-
-
-
-//       receiptPanel = new JPanel();
-//       receiptPanel.setVisible(true);
-//       receiptPanel.setBackground(new Color(250,251,253)); 
-//       try {
-//           JEditorPane htmlPane = new JEditorPane();
-//           htmlPane.setPage(new URL("../resources/src/gameRules.html"));
-//           htmlPane.setEditable(false);
-//           receiptPanel.add(new JScrollPane(htmlPane));
-//        } catch(IOException ioe) {
-//          System.err.println("Error displaying file");
-//        }     
-//          
-//       
- 
-   
- 
- 
- 
- 
- 
- 
-      
-   }   
-   
-   
-   
-public static void main (String[]args)throws Exception
-   {
-      
-      MITH_HowToPlay_GUI tableForView = new MITH_HowToPlay_GUI();
-   }
+    f.getContentPane().add(editorScrollPane, BorderLayout.NORTH);
+    Border loweredBevel = BorderFactory.createLoweredSoftBevelBorder();
+    Border howToPlayBorder = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20), loweredBevel);
+    f.setBackground(Color.BLACK);
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //menuPanel.setBorder(menuBorder);
+    editorPane.setBorder(howToPlayBorder);
+  
+    f.setResizable(true);
+    f.setVisible(true);
 }
 
-
-
-
- 
-   
+public static void main(String[] args) 
+{
+     createFrame();
+    
+    
+}
+}
