@@ -5,7 +5,7 @@
  *********************************/
 
 /** ####################################################### **
- Test class for creating and updating a statistics window.
+ GUI class for creating and updating a statistics window.
  
  For now, a method creates multiple labels, incorporating 
  content from an ArrayList using a for-loop. 
@@ -40,6 +40,11 @@ import java.io.FileNotFoundException;
      
      private String text;
      
+     /*************************************************
+     * GameStats_GUI is the constructor, creating the *
+     * window frame and content pane in which the     *
+     * statistics will be displayed.                  *
+     **************************************************/
      public GameStats_GUI(){
          
          //Initial window attributes
@@ -64,6 +69,12 @@ import java.io.FileNotFoundException;
          
      }//End GameStats
      
+     /*************************************************
+     * createStats() makes use of two for-loops,      *
+     * creating the labels for stat titles and the    *
+     * statistics themselves, which are pulled from   *
+     * the stats.txt file with use of Scanner.        *
+     **************************************************/
      public void createStats(){
         
          //List of specific statistic titles.
