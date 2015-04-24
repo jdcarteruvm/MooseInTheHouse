@@ -9,6 +9,7 @@
 import java.awt.image.*;
 import javax.imageio.*;
 import java.io.*;
+import java.util.Random;
 
 class MITH_Player {
 
@@ -99,8 +100,46 @@ class MITH_Player {
 	/*********************************************************
 	 () - attempts to play a card from player's hand
 	 *********************************************************/
-//	public MITH_Move playACard() {
-//		if	
+	public MITH_Move playACard(int my_id) {
+		// implements a basic random card playing strategy
+		// we'll pick a random player and try to play a card on their house 
+		// until we find a valid move, then play it - if no valid move is found, 
+		// we'll move on to another player, after trying all  
+		MITH_Move move = new MITH_Move();
+		move.player = this;
+		
+		Random rand = new Random();
+		int r = rand.nextInt(3) + 1; 			// pick a starting index
+		int playerid = (my_id + r) % 4; // pick other player's id
+		
+		my_hand.addCard(game.drawFromDeck());
+		
+		for(int i = 0; i < 3; i++)
+		{
+			MITH_House otherHouse = game.getHouse(playerid);
+			for(int j = 0; j < my_hand.getSize(); j++) {
+				move.card = my_hand.check(j);
+				move.house = playerid;
+				move.handIndex = j;
+				for(int k = 0; k < otherHouse.numRooms();k++) {
+					move.roomslot = k;
+					if(game.makeMove(move)) {
+						return move;
+					}
+				}
+			}
+		}
+		
+		move.card = my_hand.check(0); // discards the oldest card in the hand
+		move.discard = true; // discards the last card tried
+		game.makeMove(move);
+		return move;
+	}
+		
+		
+			
+		
+	
 
 
 	/********************************************************* 

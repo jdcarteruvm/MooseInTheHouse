@@ -90,6 +90,15 @@ public class MITH_House {
     return false;
     
   }
+  
+  /**************************************************
+   numRooms
+   returns number of room slots this has, not
+   including entry
+   ***************************************************/
+  public int numRooms() {
+  	return rooms.size();
+  }
 	/***************************************************
 	 addMooseRoom 
 	 add a moosed room card to the house in a certain

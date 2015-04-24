@@ -31,6 +31,12 @@ public class Game_GUI_Tester {
 
     game.dealCards();  
 		board.validateHand();
+		
+		MITH_Move move = new MITH_Move();
+		move.discard = true;
+		move.card = new MITH_Card();
+		
+		board.update(move);
 			
 	}
 }

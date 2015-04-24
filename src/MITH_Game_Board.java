@@ -345,6 +345,27 @@ public class MITH_Game_Board extends JLayeredPane {
     	handPanel.revalidate();			
 		}
 		
+		
+		/*******************************************************
+		 update - updates the GUI in response to a move reported
+		 by the game
+		 *******************************************************/
+		public void update(MITH_Move move) {
+			if(move.discard) {
+				System.out.println("Discarding card...");
+				MITH_Label discardLabel = new MITH_Label();
+				discardLabel.setIcon(new ImageIcon(IM_PATH + move.card.getImage()));
+				System.out.println(IM_PATH + move.card.getImage());
+				discardPile.add(discardLabel);
+				discardPile.revalidate();		
+			}
+			
+			revalidate();
+		}
+		
+		
+		
+		
     private class MyMouseAdapter extends MouseAdapter {
         private MITH_Label dragLabel = null;
         private boolean drawDragLabel = false;

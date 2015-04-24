@@ -107,6 +107,7 @@ public class MITH_Table_GUI extends JFrame
     game.addPlayer(player2);
     game.addPlayer(player3);
     game.addPlayer(player4);
+    
        
       leftPanel.add(board);
       rightPanel.add(menuPanel);
@@ -286,6 +287,8 @@ public class MITH_Table_GUI extends JFrame
       //handArea.setBackground(Color.BLACK);
       add(table);
       setVisible(true);  
+	
+	    game.dealCards();
       
    }
    

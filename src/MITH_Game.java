@@ -46,6 +46,33 @@ public class MITH_Game {
 		GUI = board;
 	}
 	
+	public MITH_House getHouse(int playerID) {
+		return houses.get(playerID);
+	}
+	
+	
+	/**********************************************************
+	 makeMove - attempts to make the move described in move
+	 if it's a valid move, the move is made and we return true
+	 **********************************************************/
+	public boolean makeMove(MITH_Move move){
+		boolean validMove = false;
+		
+		switch(move.card.getType()) {
+			case MITH_Card.DOOR: validMove = playDoor(move); break;
+			case MITH_Card.MITH: validMove = playMITH(move); break;
+			case MITH_Card.ROOMEMPTY: validMove = playRoomEmpty(move); break;
+			case MITH_Card.ROOMMOOSE: validMove = playRoomMoose(move); break;
+			case MITH_Card.TRAP: validMove = playTrap(move); break;
+		}
+		
+		if(validMove) {
+			GUI.update(move);
+		}
+		
+		return validMove;
+	}
+		
 	/**********************************************************
 	 playTrap() - handles playing a trap card: makes sure that
 	 it is a valid play for the current state of the game
@@ -76,6 +103,7 @@ public class MITH_Game {
 		
 		return false;
 	} //end playTrap
+	
 	
 	
 	/*********************************************************
